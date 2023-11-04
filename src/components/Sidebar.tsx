@@ -2,7 +2,6 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { SidebarContainerProps } from "types/styledComponentsProps";
 import logoIcon from "assets/icons/logo.svg";
-import { Link } from "react-router-dom";
 import { Navigation } from "./Navigation";
 import { navLinksList } from "resources/resources";
 
@@ -13,6 +12,7 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   height: 100vh;
   position: fixed;
   left: ${({ isOpen }) => (isOpen ? 0 : "-100%")};
+  transition: 1.5s all ease;
   top: 0;
   width: 257px;
   background-color: ${({ theme }) => theme.dullColors.sectionsBg};
@@ -37,6 +37,11 @@ const LogoContainer = styled.div`
   display: flex;
   gap: 12.31px;
   align-items: center;
+  align-self: flex-start;
+  position: relative;
+  left: 10px;
+  margin-bottom: 35px;
+  cursor: pointer;
 `;
 
 export const Sidebar = () => {
@@ -49,12 +54,10 @@ export const Sidebar = () => {
   return (
     <div>
       <SidebarContainer isOpen={isOpen}>
-        <Link to={"/"}>
-          <LogoContainer>
-            <LogoIcon src={logoIcon} alt="Pretty logo for you" />
-            <LogoTitle>LabTracker</LogoTitle>
-          </LogoContainer>
-        </Link>
+        <LogoContainer onClick={onClose}>
+          <LogoIcon src={logoIcon} alt="Pretty logo for you" />
+          <LogoTitle>LabTracker</LogoTitle>
+        </LogoContainer>
         <Navigation links={navLinksList} />
       </SidebarContainer>
     </div>
