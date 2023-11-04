@@ -8,5 +8,22 @@ export const GlobalStyle = createGlobalStyle`
     }
     html, body {
         font-family: 'Plus Jakarta Sans', sans-serif;
+        background: ${(props) => props.theme.dullColors.lightGray};
+        width: 100%;
+        height: 100%;
+    }
+
+    #root {
+        width: 100%;
+        height: 100%;
+    }
+
+    a {
+        color: unset;
+        text-decoration: unset;
+    }
+
+    ul {
+        list-style-type: none;
     }
 `;
