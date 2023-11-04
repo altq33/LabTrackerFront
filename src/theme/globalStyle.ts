@@ -6,4 +6,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
+    html, body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
 `;

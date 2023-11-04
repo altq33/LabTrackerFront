@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import "./App.css";
 
-const App = () => {
+export const App = () => {
   const Block = styled.div`
     color: red;
     background: ${(props) => props.theme.colors.blue};
@@ -15,10 +15,9 @@ const App = () => {
   return (
     <>
       <Block>
-        <span>kdfjkfds </span> sdfsd
+        <span>Oh shit i am pridurok </span>
+        Ya tot eshe ubludok
       </Block>
     </>
   );
 };
-
-export default App;
