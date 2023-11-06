@@ -12,7 +12,7 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   height: 100vh;
   position: fixed;
   left: ${({ isOpen }) => (isOpen ? 0 : "-100%")};
-  transition: 1.5s all ease;
+  transition: 1.5s left ease;
   top: 0;
   width: 257px;
   background-color: ${({ theme }) => theme.dullColors.sectionsBg};

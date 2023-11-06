@@ -6,3 +6,13 @@ export interface NavigationLinkProps {
   selectedMarker: string;
   notSelectedMarker: string;
 }
+
+export interface BackgroundLineProps {
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  width: string;
+  rotation?: string;
+  color: string;
+}

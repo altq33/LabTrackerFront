@@ -1,22 +1,39 @@
-import { Layout } from "pages/Layout";
+import { Wrapper } from "components/Wrapper";
+import { Welcome } from "pages/Welcome";
+import { WorkSpaceLayout } from "pages/WorkSpaceLayout";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Wrapper />,
     children: [
       {
-        path: "subjects",
-        element: null,
+        path: "/",
+        element: <Welcome />,
+        index: true,
       },
       {
-        path: "teachers",
-        element: null,
-      },
-      {
-        path: "tasks",
-        element: null,
+        path: "workspace",
+        element: <WorkSpaceLayout />,
+        children: [
+          {
+            path: "overview",
+            element: null,
+          },
+          {
+            path: "subjects",
+            element: null,
+          },
+          {
+            path: "teachers",
+            element: null,
+          },
+          {
+            path: "tasks",
+            element: null,
+          },
+        ],
       },
     ],
   },
