@@ -4,12 +4,22 @@ import folderIcon from "assets/icons/folder.svg";
 import heartIcon from "assets/icons/heart.svg";
 import codeIcon from "assets/icons/code.svg";
 import { BackgroundLineProps } from "types/styledComponentsProps";
+import { MouseEvent, useRef } from "react";
+
+const FullscreenStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  scroll-snap-type: y mandatory;
+`;
 
 const FullscreenContainer = styled.div`
   width: 100%;
   min-height: 100vh;
+  height: 1px;
   background: white;
   overflow: hidden;
+  scroll-snap-align: start;
 `;
 
 const FlexContainer = styled.div`
@@ -92,43 +102,72 @@ const BackgroundLine = styled.span<BackgroundLineProps>`
   left: ${(props) => props.left || "auto"};
   right: ${(props) => props.right || "auto"};
   bottom: ${(props) => props.bottom || "auto"};
+
+  @media (max-width: 785px) {
+    display: none;
+  }
 `;
 
 export const Welcome = () => {
-  return (
-    <FullscreenContainer>
-      <BackgroundLine color="#ec31cd" width="150px" top="70px" left="0" />
-      <BackgroundLine color="#D0D0FF" width="177px" top="170px" left="50px" />
-      <BackgroundLine color="#ec31cd" width="97px" top="400px" left="250px" />
-      <BackgroundLine color="#D0D0FF" width="177px" right="100px" top="100px" />
-      <BackgroundLine color="#ec31cd" width="177px" right="150px" top="400px" />
-      <BackgroundLine
-        color="#D0D0FF"
-        width="58px"
-        right="400px"
-        bottom="120px"
-      />
-      <BackgroundLine
-        color="#ec31cd"
-        width="103px"
-        bottom="100px"
-        left="55px"
-      />
+  const secondBlock = useRef<HTMLDivElement | null>(null);
 
-      <FlexContainer>
-        <HelloTitle>Hello</HelloTitle>
-        <Slogan>Good to see you here</Slogan>
-        <Link href="https://LabTracker.com">LabTracker.com</Link>
-        <Logo src={logo} />
-        <StartButton>
-          <Slogan>LET'S START</Slogan>
-        </StartButton>
-        <IconsContainer>
-          <Icon src={folderIcon} />
-          <Icon src={heartIcon} />
-          <Icon src={codeIcon} />
-        </IconsContainer>
-      </FlexContainer>
-    </FullscreenContainer>
+  const scrollNext = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    if (secondBlock) {
+      secondBlock.current?.scrollIntoView({
+        block: "start",
+        behavior: "smooth",
+      });
+    }
+  };
+
+  return (
+    <FullscreenStack>
+      <FullscreenContainer>
+        <BackgroundLine color="#ec31cd" width="150px" top="70px" left="0" />
+        <BackgroundLine color="#D0D0FF" width="177px" top="170px" left="50px" />
+        <BackgroundLine color="#ec31cd" width="97px" top="400px" left="250px" />
+        <BackgroundLine
+          color="#D0D0FF"
+          width="177px"
+          right="100px"
+          top="100px"
+        />
+        <BackgroundLine
+          color="#ec31cd"
+          width="177px"
+          right="150px"
+          top="400px"
+        />
+        <BackgroundLine
+          color="#D0D0FF"
+          width="58px"
+          right="400px"
+          bottom="120px"
+        />
+        <BackgroundLine
+          color="#ec31cd"
+          width="103px"
+          bottom="100px"
+          left="55px"
+        />
+
+        <FlexContainer>
+          <HelloTitle>Hello</HelloTitle>
+          <Slogan>Good to see you here</Slogan>
+          <Link href="https://LabTracker.com">LabTracker.com</Link>
+          <Logo src={logo} />
+          <StartButton onClick={scrollNext}>
+            <Slogan>LET'S START</Slogan>
+          </StartButton>
+          <IconsContainer>
+            <Icon src={folderIcon} />
+            <Icon src={heartIcon} />
+            <Icon src={codeIcon} />
+          </IconsContainer>
+        </FlexContainer>
+      </FullscreenContainer>
+      <FullscreenContainer ref={secondBlock}>Кекс</FullscreenContainer>
+    </FullscreenStack>
   );
 };

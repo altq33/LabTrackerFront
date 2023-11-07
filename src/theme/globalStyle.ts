@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
         background: ${(props) => props.theme.dullColors.lightGray};
         width: 100%;
         height: 100%;
+        scroll-snap-type: y mandatory;
     }
 
     #root {
