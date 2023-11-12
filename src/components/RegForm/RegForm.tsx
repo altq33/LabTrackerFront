@@ -15,6 +15,27 @@ export const RegForm = () => {
   return (
     <S.RegistrationForm onSubmit={handleSubmit(onSubmit)}>
       <S.AuthFormLabel>
+        Username
+        <S.AuthFormInput
+          type="email"
+          {...register("username", {
+            minLength: {
+              value: 4,
+              message: "Username should contain min 4ch",
+            },
+            maxLength: {
+              value: 100,
+              message: "Username should contain max 100ch",
+            },
+            pattern: {
+              value: /^[a-zA-Z0-9_]+$/,
+              message:
+                "Username should contain only letters and numbers, as well as lower emphasis",
+            },
+          })}
+        />
+      </S.AuthFormLabel>
+      <S.AuthFormLabel>
         Email
         <S.AuthFormInput
           type="email"
@@ -62,7 +83,8 @@ export const RegForm = () => {
       </S.AuthFormLabel>
       <S.AuthFormSubmitBtn type="submit" value="Submit" disabled={!isValid} />
       <S.ErrorBlock>
-        {errors.email?.message ||
+        {errors.username?.message ||
+          errors.email?.message ||
           errors.password?.message ||
           errors.repeatPassword?.message}
       </S.ErrorBlock>

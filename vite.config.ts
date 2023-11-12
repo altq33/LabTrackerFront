@@ -12,6 +12,7 @@ export default defineConfig({
       pages: "/src/pages",
       assets: "/src/assets",
       resources: "/src/resources",
+      store: "/src/store",
     },
   },
 });

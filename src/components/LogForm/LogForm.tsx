@@ -14,16 +14,32 @@ export const LogForm = () => {
   return (
     <S.RegistrationForm onSubmit={handleSubmit(onSubmit)}>
       <S.AuthFormLabel>
-        Email
-        <S.AuthFormInput type="email" {...register("email")} />
+        Username or Email
+        <S.AuthFormInput
+          type="email"
+          {...register("usernameOrEmail", {
+            required: {
+              value: true,
+              message: "Username or Email are required",
+            },
+          })}
+        />
       </S.AuthFormLabel>
       <S.AuthFormLabel>
         Password
-        <S.AuthFormInput type="password" {...register("password")} />
+        <S.AuthFormInput
+          type="password"
+          {...register("password", {
+            required: {
+              value: true,
+              message: "Password are required",
+            },
+          })}
+        />
       </S.AuthFormLabel>
       <S.AuthFormSubmitBtn type="submit" value="Submit" disabled={!isValid} />
       <S.ErrorBlock>
-        {errors.email?.message || errors.password?.message}
+        {errors.usernameOrEmail?.message || errors.password?.message}
       </S.ErrorBlock>
     </S.RegistrationForm>
   );

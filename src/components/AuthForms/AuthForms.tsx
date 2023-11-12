@@ -15,7 +15,7 @@ export const AuthForms = () => {
         <S.RightSideContainer>
           <S.FormTitle>{isRegistration ? "Sign up" : "Sign in"}</S.FormTitle>
           <S.AlreadyRegBtn onClick={() => setIsRegistration((prev) => !prev)}>
-            Already registered?
+            {isRegistration ? "Sign in" : "Sign up"}
           </S.AlreadyRegBtn>
           {isRegistration ? <RegForm /> : <LogForm />}
         </S.RightSideContainer>

@@ -23,7 +23,7 @@ export const AuthFormInput = styled.input`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
-    background: unset;
+    background: white;
   }
 
   width: 200px;

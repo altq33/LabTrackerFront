@@ -3,11 +3,9 @@ import { styled } from "styled-components";
 export const FormContainer = styled.div`
   width: 55%;
   display: flex;
-  height: 450px;
+  height: 80vh;
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  @media (max-width: 940px) {
-    height: 80vh;
-  }
+
   @media (max-width: 540px) {
     width: 80%;
   }
@@ -17,7 +15,7 @@ export const LeftSideImage = styled.img`
   height: 100%;
   width: 40%;
   object-fit: cover;
-  @media (max-width: 540px) {
+  @media (max-width: 800px) {
     display: none;
   }
 `;
