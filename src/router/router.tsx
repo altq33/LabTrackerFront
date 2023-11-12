@@ -1,5 +1,5 @@
 import { Wrapper } from "components/Wrapper";
-import { Welcome } from "pages/Welcome";
+import { Welcome } from "pages/Welcome/Welcome";
 import { WorkSpaceLayout } from "pages/WorkSpaceLayout";
 import { createBrowserRouter } from "react-router-dom";
 
