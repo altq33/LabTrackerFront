@@ -98,6 +98,7 @@ export const RegForm = () => {
         />
       </S.AuthFormLabel>
       <S.AuthFormSubmitBtn type="submit" value="Submit" disabled={!isValid} />
+      {/* Прошу простить за этот кринж */}
       <S.ErrorBlock>
         {errors.username?.message ||
           errors.email?.message ||

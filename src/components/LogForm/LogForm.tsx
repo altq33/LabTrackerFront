@@ -18,7 +18,6 @@ export const LogForm = () => {
   const onSubmit: SubmitHandler<LogFormInputs> = (data) => {
     dispatch(login(data));
   };
-
   return (
     <S.RegistrationForm onSubmit={handleSubmit(onSubmit)}>
       <S.AuthFormLabel>

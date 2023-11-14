@@ -3,9 +3,13 @@ import * as S from "./styles";
 import logoIcon from "assets/icons/logo.svg";
 import { Navigation } from "../Navigation";
 import { navLinksList } from "resources/resources";
+import { MiniProfile } from "components/MiniProfile/MiniProfile";
+import { useSelector } from "react-redux";
+import { UserState } from "types/store";
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const state = useSelector((state: { user: UserState }) => state.user);
 
   const onClose = () => {
     setIsOpen(false);
@@ -19,6 +23,7 @@ export const Sidebar = () => {
           <S.LogoTitle>LabTracker</S.LogoTitle>
         </S.LogoContainer>
         <Navigation links={navLinksList} />
+        <MiniProfile name={state.user?.username ?? ""} link="#" />
       </S.SidebarContainer>
     </div>
   );

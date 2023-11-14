@@ -8,3 +8,8 @@ export interface NavigationLink {
 export interface NavigationProps {
   links: NavigationLink[];
 }
+
+export interface MiniProfileProps {
+  name: string;
+  link: string;
+}
