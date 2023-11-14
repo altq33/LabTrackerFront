@@ -1,6 +1,8 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import * as S from "./styles";
 import { RegFormInputs } from "types/formInputs";
+import { useDispatch } from "react-redux";
+import { registration } from "store/actionCreators/user";
 
 export const RegForm = () => {
   const {
@@ -9,16 +11,27 @@ export const RegForm = () => {
     watch,
     formState: { errors, isValid },
   } = useForm<RegFormInputs>({ mode: "onChange" });
+  const dispatch = useDispatch();
 
-  const onSubmit: SubmitHandler<RegFormInputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<RegFormInputs> = (data) => {
+    console.log(data);
+    dispatch(
+      registration({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      }),
+    );
+  };
 
   return (
     <S.RegistrationForm onSubmit={handleSubmit(onSubmit)}>
       <S.AuthFormLabel>
         Username
         <S.AuthFormInput
-          type="email"
+          type="text"
           {...register("username", {
+            required: "The field is mandatory for filling out",
             minLength: {
               value: 4,
               message: "Username should contain min 4ch",
