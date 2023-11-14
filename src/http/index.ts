@@ -10,3 +10,15 @@ $api.interceptors.request.use((config) => {
   )}`;
   return config;
 });
+
+$api.interceptors.response.use(
+  (config) => {
+    return config;
+  },
+  async (error) => {
+    if (error.response.status == 401 && error.config) {
+      localStorage.removeItem("persist:root");
+    }
+    throw error;
+  },
+);

@@ -1,27 +1,30 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import * as S from "./styles";
 import { RegFormInputs } from "types/formInputs";
-import { useDispatch } from "react-redux";
-import { registration } from "store/actionCreators/user";
+import { useState } from "react";
+import { UserRegResponse } from "types/api";
+import { $api } from "../../http/index";
 
 export const RegForm = () => {
+  const [registrationResult, setRegistrationResult] = useState<boolean | null>(
+    null,
+  );
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isValid },
   } = useForm<RegFormInputs>({ mode: "onChange" });
-  const dispatch = useDispatch();
 
   const onSubmit: SubmitHandler<RegFormInputs> = (data) => {
-    console.log(data);
-    dispatch(
-      registration({
-        username: data.username,
-        email: data.email,
-        password: data.password,
-      }),
-    );
+    $api
+      .post<UserRegResponse>("/users", data)
+      .then(() => {
+        setRegistrationResult(true);
+      })
+      .catch(() => {
+        setRegistrationResult(false);
+      });
   };
 
   return (
@@ -100,6 +103,11 @@ export const RegForm = () => {
           errors.email?.message ||
           errors.password?.message ||
           errors.repeatPassword?.message}
+        {registrationResult === true
+          ? "Successful registration!"
+          : registrationResult === false
+          ? "Registration error!"
+          : null}
       </S.ErrorBlock>
     </S.RegistrationForm>
   );

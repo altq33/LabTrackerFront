@@ -1,5 +1,8 @@
 import { rootReducer } from "store/reducers";
-import { UserRegResponse } from "./api";
+// eslint-disable-next-line import/named
+import { AnyAction } from "redux";
+// eslint-disable-next-line import/named
+import { ThunkDispatch } from "redux-thunk";
 
 export interface User {
   email: string;
@@ -11,23 +14,19 @@ export interface UserState {
   user: User | null;
   loading: boolean;
   error: null | string;
+  success: boolean;
 }
 
 export enum UserActionsType {
-  REG = "REG",
   LOG = "LOG",
   LOGOUT = "LOGOUT",
   FETCH = "FETCH",
   ERROR = "ERROR",
 }
 
-export interface RegAction {
-  type: UserActionsType.REG;
-  payload: UserRegResponse;
-}
-
 export interface LogAction {
   type: UserActionsType.LOG;
+  payload: User;
 }
 
 export interface LogoutAction {
@@ -43,11 +42,9 @@ export interface ErrorAction {
   payload: string;
 }
 
-export type UserAction =
-  | RegAction
-  | LogAction
-  | LogoutAction
-  | FetchAction
-  | ErrorAction;
+export type UserAction = LogAction | LogoutAction | FetchAction | ErrorAction;
 
 export type RootState = ReturnType<typeof rootReducer>;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type AppDispatch = ThunkDispatch<UserState, any, AnyAction>;

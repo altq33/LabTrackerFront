@@ -3,7 +3,8 @@ import { styled, ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../theme/globalStyle";
 import { theme } from "../theme/theme";
 import { Provider } from "react-redux";
-import { store } from "store/store";
+import { persistor, store } from "store/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const SWrapper = styled.div`
   width: 100%;
@@ -12,11 +13,13 @@ const SWrapper = styled.div`
 
 export const Wrapper = () => (
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <SWrapper>
-        <Outlet />
-      </SWrapper>
-    </ThemeProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <SWrapper>
+          <Outlet />
+        </SWrapper>
+      </ThemeProvider>
+    </PersistGate>
   </Provider>
 );

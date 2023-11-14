@@ -6,16 +6,24 @@ export const userReducer = (
   action: UserAction,
 ): UserState => {
   switch (action.type) {
-    case UserActionsType.REG:
-      return { loading: false, error: null, user: action.payload };
     case UserActionsType.LOG:
-      return { loading: false, error: null, user: null };
+      return {
+        loading: false,
+        error: null,
+        user: action.payload,
+        success: true,
+      };
     case UserActionsType.LOGOUT:
-      return { loading: false, error: null, user: null };
+      return { loading: false, error: null, user: null, success: true };
     case UserActionsType.ERROR:
-      return { loading: false, error: action.payload, user: null };
+      return {
+        loading: false,
+        error: action.payload,
+        user: null,
+        success: false,
+      };
     case UserActionsType.FETCH:
-      return { loading: true, error: null, user: null };
+      return { loading: true, error: null, user: null, success: false };
     default:
       return state;
   }

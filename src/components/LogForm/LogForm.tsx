@@ -1,45 +1,38 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { LogFormInputs } from "types/formInputs";
 import * as S from "components/RegForm/styles";
+import { login } from "store/actionCreators/user";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, UserState } from "types/store";
+import { Navigate } from "react-router-dom";
 
 export const LogForm = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const selector = useSelector((state: { user: UserState }) => state.user);
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = useForm<LogFormInputs>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<LogFormInputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<LogFormInputs> = (data) => {
+    dispatch(login(data));
+  };
 
   return (
     <S.RegistrationForm onSubmit={handleSubmit(onSubmit)}>
       <S.AuthFormLabel>
         Username or Email
-        <S.AuthFormInput
-          type="email"
-          {...register("usernameOrEmail", {
-            required: {
-              value: true,
-              message: "Username or Email are required",
-            },
-          })}
-        />
+        <S.AuthFormInput type="text" {...register("username")} />
       </S.AuthFormLabel>
       <S.AuthFormLabel>
         Password
-        <S.AuthFormInput
-          type="password"
-          {...register("password", {
-            required: {
-              value: true,
-              message: "Password are required",
-            },
-          })}
-        />
+        <S.AuthFormInput type="password" {...register("password")} />
       </S.AuthFormLabel>
       <S.AuthFormSubmitBtn type="submit" value="Submit" disabled={!isValid} />
       <S.ErrorBlock>
-        {errors.usernameOrEmail?.message || errors.password?.message}
+        {selector.error ||
+          (selector.success ? <Navigate to="/workspace" /> : null)}
       </S.ErrorBlock>
     </S.RegistrationForm>
   );

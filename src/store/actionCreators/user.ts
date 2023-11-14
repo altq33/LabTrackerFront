@@ -1,17 +1,30 @@
 /* eslint-disable import/named */
 import { $api } from "../../http/index";
 import { Dispatch } from "redux";
-import { UserReg, UserRegResponse } from "types/api";
+import { UserLog, UserLogResponse } from "types/api";
 import { UserAction, UserActionsType } from "types/store";
 
-export const registration = (data: UserReg) => {
+export const login = (data: UserLog) => {
   return async (dispatch: Dispatch<UserAction>) => {
     try {
       dispatch({ type: UserActionsType.FETCH });
-      const response = await $api.post<UserRegResponse>("/users", data);
-      dispatch({ type: UserActionsType.REG, payload: response.data });
+      const formData = new FormData();
+      formData.append("username", data.username);
+      formData.append("password", data.password);
+      const response = await $api.post<UserLogResponse>(
+        "/users/auth",
+        formData,
+      );
+      localStorage.setItem("accessToken", response.data.access_token);
+      dispatch({
+        type: UserActionsType.LOG,
+        payload: response.data.user,
+      });
     } catch (e) {
-      dispatch({ type: UserActionsType.ERROR, payload: "Registration error" });
+      dispatch({
+        type: UserActionsType.ERROR,
+        payload: "Incorrect login or password",
+      });
     }
   };
 };

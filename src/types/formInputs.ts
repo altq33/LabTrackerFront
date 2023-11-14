@@ -6,6 +6,6 @@ export interface RegFormInputs {
 }
 
 export interface LogFormInputs {
-  usernameOrEmail: string;
+  username: string;
   password: string;
 }
