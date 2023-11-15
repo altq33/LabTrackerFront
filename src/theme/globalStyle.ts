@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     html, body {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        background: ${(props) => props.theme.dullColors.lightGray};
+        background: ${(props) => props.theme.dullColors.back};
         width: 100%;
         height: 100%;
         scroll-snap-type: y mandatory;

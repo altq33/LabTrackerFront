@@ -12,6 +12,7 @@ export interface MainTheme {
     gray2: string;
     gray3: string;
     lightGray: string;
+    back: string;
     white: string;
     sectionsBg: string;
     border: string;

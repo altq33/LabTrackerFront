@@ -24,3 +24,7 @@ export interface WorkSpaceWrapperProps {
 export interface OpenBtnProps {
   isOpen: boolean;
 }
+
+export interface TeacherAvatarProps {
+  id: string;
+}

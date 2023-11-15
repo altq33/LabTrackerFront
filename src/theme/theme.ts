@@ -14,6 +14,7 @@ export const theme: MainTheme = {
     gray2: "#82808F",
     gray3: "#9896A3",
     lightGray: "#C6C3CD",
+    back: "#F9F8FF",
     white: "#F5FFFC",
     sectionsBg: "#FFFFFF",
     border: "#e6e4f0",
