@@ -26,6 +26,8 @@ export const teacherReducer = (
       };
     case TeacherActionsType.GET_ALL_TEACHERS:
       return { error: null, loading: false, teachers: action.payload };
+    case TeacherActionsType.RESET:
+      return initialTeachersState;
     default:
       return state;
   }

@@ -1,4 +1,6 @@
 import axios from "axios";
+import { persistor, store } from "store/store";
+import { UserActionsType } from "types/store";
 
 export const API_URL = "http://localhost:8000";
 
@@ -17,7 +19,7 @@ $api.interceptors.response.use(
   },
   async (error) => {
     if (error.response.status == 401 && error.config) {
-      localStorage.removeItem("persist:root");
+      store.dispatch({ type: UserActionsType.LOGOUT });
     }
     throw error;
   },

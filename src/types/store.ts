@@ -30,6 +30,7 @@ export enum TeacherActionsType {
   ADD_TEACHER = "ADD_TEACHER",
   DELETE_TEACHER = "DELETE_TEACHER",
   GET_ALL_TEACHERS = "GET_ALL_TEACHERS",
+  RESET = "RESET",
 }
 
 export interface TeacherFetchAction {
@@ -56,6 +57,10 @@ export interface TeacherDeleteAction {
   payload: Teacher["id"];
 }
 
+export interface TeacherReset {
+  type: TeacherActionsType.RESET;
+}
+
 export enum UserActionsType {
   LOG = "LOG",
   LOGOUT = "LOGOUT",
@@ -68,7 +73,8 @@ export type TeacherAction =
   | TeacherDeleteAction
   | TeacherErrorAction
   | TeacherFetchAction
-  | TeachersGetAction;
+  | TeachersGetAction
+  | TeacherReset;
 
 export interface LogAction {
   type: UserActionsType.LOG;

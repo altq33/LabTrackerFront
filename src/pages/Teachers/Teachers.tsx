@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as S from "./styles";
-
 import { AppDispatch, TeacherState, UserState } from "types/store";
 import { useLayoutEffect } from "react";
 import { getAllTeachers } from "store/actionCreators/teachers";
@@ -18,7 +17,8 @@ export const Teachers = () => {
 
   return (
     <S.TeachersContainer>
-      <TeacherList data={state.teachers} />
+      {state.loading ? "Loading" : <TeacherList data={state.teachers || []} />}
+      {state.error}
     </S.TeachersContainer>
   );
 };

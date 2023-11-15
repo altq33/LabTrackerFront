@@ -5,5 +5,5 @@ export const TeacherListContainer = styled.ul`
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  align-items: center;
+  align-items: flex-start;
 `;

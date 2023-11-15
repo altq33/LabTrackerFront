@@ -5,7 +5,7 @@ export const TeachersContainer = styled.div`
   position: relative;
   animation: ${departure} 0.65s linear;
   display: flex;
-  width: 50%;
+  width: 65%;
   flex-direction: column;
   border: 1px solid ${({ theme }) => theme.dullColors.border};
   background: #fff;

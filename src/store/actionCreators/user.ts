@@ -2,7 +2,7 @@
 import { $api } from "../../http/index";
 import { Dispatch } from "redux";
 import { UserLog, UserLogResponse } from "types/api";
-import { UserAction, UserActionsType } from "types/store";
+import { User, UserAction, UserActionsType } from "types/store";
 
 export const login = (data: UserLog) => {
   return async (dispatch: Dispatch<UserAction>) => {
@@ -24,6 +24,24 @@ export const login = (data: UserLog) => {
       dispatch({
         type: UserActionsType.ERROR,
         payload: "Incorrect login or password",
+      });
+    }
+  };
+};
+
+export const refresh = () => {
+  return async (dispatch: Dispatch<UserAction>) => {
+    try {
+      const response = await $api.get<User>("/users/me");
+
+      dispatch({
+        type: UserActionsType.LOG,
+        payload: response.data,
+      });
+    } catch (e) {
+      dispatch({
+        type: UserActionsType.ERROR,
+        payload: "Unauthorized",
       });
     }
   };
