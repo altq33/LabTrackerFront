@@ -31,3 +31,23 @@ export const getAllTeachers = () => {
     }
   };
 };
+
+export const deleteTeacher = (id: string) => {
+  return async (dispatch: Dispatch<TeacherAction>) => {
+    try {
+      dispatch({ type: TeacherActionsType.FETCH_TEACHER });
+      const response = await $api.delete<{ id: Teacher["id"] }>(
+        `/teachers/${id}`,
+      );
+      dispatch({
+        type: TeacherActionsType.DELETE_TEACHER,
+        payload: response.data.id,
+      });
+    } catch (e: unknown) {
+      dispatch({
+        type: TeacherActionsType.ERROR_TEACHER,
+        payload: "Delete Error",
+      });
+    }
+  };
+};

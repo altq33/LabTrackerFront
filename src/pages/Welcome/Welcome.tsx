@@ -6,9 +6,13 @@ import { MouseEvent, useRef } from "react";
 import * as S from "./styles";
 import { About } from "components/About";
 import { AuthForms } from "components/AuthForms/AuthForms";
+import { useSelector } from "react-redux";
+import { UserState } from "types/store";
+import { Navigate } from "react-router-dom";
 
 export const Welcome = () => {
   const secondBlock = useRef<HTMLDivElement | null>(null);
+  const state = useSelector((state: { user: UserState }) => state.user);
 
   const scrollNext = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -20,7 +24,9 @@ export const Welcome = () => {
     }
   };
 
-  return (
+  return state.user ? (
+    <Navigate to="/workspace" />
+  ) : (
     <S.FullscreenStack>
       <S.FullscreenContainer>
         <S.BackgroundLine color="#ec31cd" width="150px" top="70px" left="0" />

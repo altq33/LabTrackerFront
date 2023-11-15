@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 import { NavigationProps } from "types/props";
+import { TeacherState } from "types/store";
 
 const LinkList = styled.ul`
   width: 217px;
@@ -53,6 +55,10 @@ const LinkListItem = styled.li`
 `;
 
 export const Navigation: React.FC<NavigationProps> = ({ links }) => {
+  const state = useSelector(
+    (state: { teacher: TeacherState }) => state.teacher,
+  );
+
   return (
     <nav>
       <LinkList>
@@ -63,6 +69,7 @@ export const Navigation: React.FC<NavigationProps> = ({ links }) => {
               <img src={link.notSelectedIcon} alt="" />
               <img src={link.selectedIcon} alt="" />
               <span>{link.text}</span>
+              <span>{state.teachers.length || null}</span>
             </LinkListItem>
           </NavigationLink>
         ))}

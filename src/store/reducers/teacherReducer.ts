@@ -18,10 +18,11 @@ export const teacherReducer = (
       };
     case TeacherActionsType.DELETE_TEACHER:
       return {
+        ...state,
         error: null,
         loading: false,
         teachers: state.teachers.filter(
-          (teacher) => teacher.id != action.payload,
+          (teacher) => teacher.id !== action.payload,
         ),
       };
     case TeacherActionsType.GET_ALL_TEACHERS:

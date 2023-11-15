@@ -14,7 +14,6 @@ const WorkSpaceWrapper = styled.div<WorkSpaceWrapperProps>`
   height: 100%;
   padding-left: ${({ isOpen }) => (isOpen ? "257px" : 0)};
   transition: 0.7s padding-left ease;
-
   @media screen and (max-width: 624px) {
     padding-left: ${({ isOpen }) => (isOpen ? "90px" : 0)};
   }

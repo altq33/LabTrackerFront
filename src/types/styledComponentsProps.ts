@@ -28,3 +28,15 @@ export interface OpenBtnProps {
 export interface TeacherAvatarProps {
   id: string;
 }
+
+export interface TeacherListItemContainerProps {
+  isOpen: boolean;
+}
+
+export interface DropdownIconProps {
+  isOpen: boolean;
+}
+
+export interface DeleteBtnProps {
+  isOpen: boolean;
+}

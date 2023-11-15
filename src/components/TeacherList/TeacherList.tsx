@@ -6,7 +6,7 @@ export const TeacherList: React.FC<TeacherListProps> = ({ data }) => {
   return (
     <S.TeacherListContainer>
       {data.map((teacher) => (
-        <TeacherListItem {...teacher} />
+        <TeacherListItem key={teacher.id} {...teacher} />
       ))}
     </S.TeacherListContainer>
   );

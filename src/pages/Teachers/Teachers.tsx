@@ -8,7 +8,8 @@ import { TeacherList } from "components/TeacherList/TeacherList";
 export const Teachers = () => {
   const dispatch: AppDispatch = useDispatch();
   const state = useSelector(
-    (state: { user: UserState; teacher: TeacherState }) => state.teacher,
+    (state: { user: UserState; teacher: TeacherState }) =>
+      state.teacher.teachers,
   );
 
   useLayoutEffect(() => {
@@ -17,8 +18,7 @@ export const Teachers = () => {
 
   return (
     <S.TeachersContainer>
-      {state.loading ? "Loading" : <TeacherList data={state.teachers || []} />}
-      {state.error}
+      <TeacherList data={state || []} />
     </S.TeachersContainer>
   );
 };
