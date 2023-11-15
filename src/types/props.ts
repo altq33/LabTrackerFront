@@ -13,3 +13,9 @@ export interface MiniProfileProps {
   name: string;
   link: string;
 }
+
+export interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onOpen: () => void;
+}

@@ -1,4 +1,6 @@
 import { Wrapper } from "components/Wrapper";
+import { Profile } from "pages/Profile/Profile";
+import { Teachers } from "pages/Teachers/Teachers";
 import { Welcome } from "pages/Welcome/Welcome";
 import { WorkSpaceLayout } from "pages/WorkSpaceLayout";
 import { createBrowserRouter } from "react-router-dom";
@@ -20,6 +22,7 @@ export const router = createBrowserRouter([
           {
             path: "overview",
             element: null,
+            index: true,
           },
           {
             path: "subjects",
@@ -27,11 +30,15 @@ export const router = createBrowserRouter([
           },
           {
             path: "teachers",
-            element: null,
+            element: <Teachers />,
           },
           {
             path: "tasks",
             element: null,
+          },
+          {
+            path: "profile",
+            element: <Profile />,
           },
         ],
       },

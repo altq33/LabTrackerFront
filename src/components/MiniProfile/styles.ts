@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import settingIcon from "assets/icons/Setting.svg";
 import { NavLink } from "react-router-dom";
 
-export const MiniProfileContainer = styled.div`
+export const MiniProfileContainer = styled(NavLink)`
   width: 207px;
   padding: 8px;
   padding-right: 19px;
@@ -13,12 +13,20 @@ export const MiniProfileContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 624px) {
+    justify-content: center;
+    width: 64px;
+  }
 `;
 
 export const LeftSideContainer = styled.div`
   display: flex;
   gap: 8px;
   height: 100%;
+  @media screen and (max-width: 624px) {
+    gap: 0;
+    width: 100%;
+  }
 `;
 
 export const Avatar = styled.img`
@@ -34,12 +42,18 @@ export const Name = styled.h3`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  @media screen and (max-width: 624px) {
+    display: none;
+  }
 `;
 
-export const SettingsIcon = styled(NavLink)`
+export const SettingsIcon = styled.div`
   cursor: pointer;
   display: block;
   width: 22px;
   height: 22px;
   background-image: url(${'"' + settingIcon + '"'});
+  @media screen and (max-width: 624px) {
+    display: none;
+  }
 `;

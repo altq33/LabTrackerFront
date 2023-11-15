@@ -16,3 +16,11 @@ export interface BackgroundLineProps {
   rotation?: string;
   color: string;
 }
+
+export interface WorkSpaceWrapperProps {
+  isOpen: boolean;
+}
+
+export interface OpenBtnProps {
+  isOpen: boolean;
+}

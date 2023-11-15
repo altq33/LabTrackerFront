@@ -16,3 +16,11 @@ export interface UserLogResponse {
   tokenType: string;
   user: User;
 }
+
+export interface Teacher {
+  id: string;
+  name: string;
+  surname: string;
+  father_name?: string;
+  phone_number?: string;
+}

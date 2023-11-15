@@ -9,3 +9,10 @@ export interface LogFormInputs {
   username: string;
   password: string;
 }
+
+export interface TeacherFormInputs {
+  name: string;
+  surname: string;
+  father_name: string;
+  phone_number: string;
+}

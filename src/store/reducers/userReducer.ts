@@ -1,8 +1,8 @@
-import { initialState } from "store/initialState";
+import { initialUserState } from "store/initialState";
 import { UserAction, UserActionsType, UserState } from "types/store";
 
 export const userReducer = (
-  state: UserState = initialState,
+  state: UserState = initialUserState,
   action: UserAction,
 ): UserState => {
   switch (action.type) {

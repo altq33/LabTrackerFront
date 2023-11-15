@@ -7,6 +7,10 @@ const LinkList = styled.ul`
   display: flex;
   flex-direction: column;
   margin-bottom: 33px;
+
+  @media screen and (max-width: 624px) {
+    width: 50px;
+  }
 `;
 
 const NavigationLink = styled(NavLink)`
@@ -16,7 +20,7 @@ const NavigationLink = styled(NavLink)`
       color: ${({ theme }) => theme.dullColors.white};
       img {
         display: none;
-        &:last-child {
+        &:nth-child(2) {
           display: block;
         }
       }
@@ -36,7 +40,13 @@ const LinkListItem = styled.li`
   padding: 15px 13px;
 
   img {
-    &:last-child {
+    &:nth-child(2) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 624px) {
+    span {
       display: none;
     }
   }
@@ -52,7 +62,7 @@ export const Navigation: React.FC<NavigationProps> = ({ links }) => {
               {/*Пришлось делать так, ведь покрасить иконку в зависимости от классе не удалось */}
               <img src={link.notSelectedIcon} alt="" />
               <img src={link.selectedIcon} alt="" />
-              {link.text}
+              <span>{link.text}</span>
             </LinkListItem>
           </NavigationLink>
         ))}

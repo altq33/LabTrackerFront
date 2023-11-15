@@ -4,12 +4,12 @@ import { MiniProfileProps } from "types/props";
 
 export const MiniProfile: React.FC<MiniProfileProps> = ({ link, name }) => {
   return (
-    <S.MiniProfileContainer>
+    <S.MiniProfileContainer to={link}>
       <S.LeftSideContainer>
         <S.Avatar src={avatar} />
         <S.Name>{name}</S.Name>
       </S.LeftSideContainer>
-      <S.SettingsIcon to={link} />
+      <S.SettingsIcon />
     </S.MiniProfileContainer>
   );
 };

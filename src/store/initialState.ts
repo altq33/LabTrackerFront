@@ -1,8 +1,14 @@
-import { UserState } from "types/store";
+import { TeacherState, UserState } from "types/store";
 
-export const initialState: UserState = {
+export const initialUserState: UserState = {
   user: null,
   loading: false,
   error: null,
   success: false,
+};
+
+export const initialTeachersState: TeacherState = {
+  error: null,
+  loading: false,
+  teachers: [],
 };
