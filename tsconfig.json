@@ -21,7 +21,8 @@
       "types/*": ["types/*"],
       "pages/*": ["pages/*"],
       "resources/*": ["resources/*"],
-      "store/*": ["store/*"]
+      "store/*": ["store/*"],
+      "http/*": ["http/*"]
     },
     /* Linting */
     "strict": true,

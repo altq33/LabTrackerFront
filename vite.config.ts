@@ -13,6 +13,7 @@ export default defineConfig({
       assets: "/src/assets",
       resources: "/src/resources",
       store: "/src/store",
+      http: "/src/http",
     },
   },
 });

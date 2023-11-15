@@ -1,3 +1,5 @@
+import { Teacher } from "./api";
+
 export interface NavigationLink {
   path: string;
   text: string;
@@ -19,3 +21,9 @@ export interface SidebarProps {
   onClose: () => void;
   onOpen: () => void;
 }
+
+export interface TeacherListProps {
+  data: Teacher[];
+}
+
+export interface TeacherListItemProps extends Teacher {}

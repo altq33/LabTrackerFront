@@ -25,19 +25,19 @@ export interface TeacherState {
 }
 
 export enum TeacherActionsType {
-  FETCH = "FETCH",
-  ERROR = "ERROR",
+  FETCH_TEACHER = "FETCH_TEACHER",
+  ERROR_TEACHER = "ERROR_TEACHER",
   ADD_TEACHER = "ADD_TEACHER",
   DELETE_TEACHER = "DELETE_TEACHER",
   GET_ALL_TEACHERS = "GET_ALL_TEACHERS",
 }
 
 export interface TeacherFetchAction {
-  type: TeacherActionsType.FETCH;
+  type: TeacherActionsType.FETCH_TEACHER;
 }
 
 export interface TeacherErrorAction {
-  type: TeacherActionsType.ERROR;
+  type: TeacherActionsType.ERROR_TEACHER;
   payload: TeacherState["error"];
 }
 
