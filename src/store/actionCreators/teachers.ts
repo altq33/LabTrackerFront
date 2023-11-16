@@ -51,3 +51,21 @@ export const deleteTeacher = (id: string) => {
     }
   };
 };
+
+export const addTeacher = (data: Omit<Teacher, "id">) => {
+  return async (dispatch: Dispatch<TeacherAction>) => {
+    try {
+      dispatch({ type: TeacherActionsType.FETCH_TEACHER });
+      const response = await $api.post<Teacher>(`/teachers`, data);
+      dispatch({
+        type: TeacherActionsType.ADD_TEACHER,
+        payload: response.data,
+      });
+    } catch (e: unknown) {
+      dispatch({
+        type: TeacherActionsType.ERROR_TEACHER,
+        payload: "Add Error",
+      });
+    }
+  };
+};

@@ -27,3 +27,8 @@ export interface TeacherListProps {
 }
 
 export interface TeacherListItemProps extends Teacher {}
+
+export interface TeachersFormProps {
+  isOpen: boolean;
+  onClose: () => void;
+}

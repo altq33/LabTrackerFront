@@ -29,6 +29,13 @@ export const ClosedGroup = styled.div`
   cursor: pointer;
 `;
 
+export const Label = styled.label`
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
 export const TeacherAvatar = styled.div<TeacherAvatarProps>`
   height: 42px;
   width: 42px;

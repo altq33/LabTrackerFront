@@ -40,3 +40,7 @@ export interface DropdownIconProps {
 export interface DeleteBtnProps {
   isOpen: boolean;
 }
+
+export interface FormContainerProps {
+  isOpen: boolean;
+}

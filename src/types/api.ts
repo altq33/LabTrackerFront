@@ -21,6 +21,6 @@ export interface Teacher {
   id: string;
   name: string;
   surname: string;
-  father_name?: string;
-  phone_number?: string;
+  father_name: string | null;
+  phone_number: string | null;
 }
