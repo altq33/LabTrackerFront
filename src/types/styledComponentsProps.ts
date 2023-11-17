@@ -44,3 +44,7 @@ export interface DeleteBtnProps {
 export interface FormContainerProps {
   isOpen: boolean;
 }
+
+export interface CoverProps {
+  id: string;
+}

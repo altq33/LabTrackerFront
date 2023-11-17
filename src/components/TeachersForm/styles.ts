@@ -97,6 +97,7 @@ export const Submit = styled.input`
     font-size: 20px;
     width: 80%;
   }
+  cursor: pointer;
 `;
 
 export const ErrorContainer = styled(ErrorBlock)`

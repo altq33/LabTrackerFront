@@ -4,11 +4,15 @@ import { Navigation } from "../Navigation";
 import { navLinksList } from "resources/resources";
 import { MiniProfile } from "components/MiniProfile/MiniProfile";
 import { useSelector } from "react-redux";
-import { UserState } from "types/store";
+import { SubjectState, UserState } from "types/store";
 import { SidebarProps } from "types/props";
+import { SidebarList } from "components/SidebarList/SidebarList";
+import { SubjectSidebarListItem } from "components/SubjectSidebarListItem/SubjectSidebarListItem";
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
-  const state = useSelector((state: { user: UserState }) => state.user);
+  const state = useSelector(
+    (state: { user: UserState; subject: SubjectState }) => state,
+  );
 
   return (
     <div>
@@ -18,8 +22,22 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <S.LogoTitle>LabTracker</S.LogoTitle>
         </S.LogoContainer>
         <Navigation links={navLinksList} />
+        <SidebarList
+          title={"Subjects"}
+          data={state.subject.subjects}
+          render={(id, title, count) => (
+            <SubjectSidebarListItem id={id} name={title} count={count!} />
+          )}
+          onAdd={() => {}}
+        />
+        <SidebarList
+          title={"Tasks"}
+          data={[]}
+          render={(id, title, count) => <div>{title + count}</div>}
+          onAdd={() => {}}
+        />
         <MiniProfile
-          name={state.user?.username ?? ""}
+          name={state.user.user?.username ?? ""}
           link="/workspace/profile"
         />
       </S.SidebarContainer>

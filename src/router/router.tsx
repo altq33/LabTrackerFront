@@ -1,5 +1,6 @@
 import { Wrapper } from "components/Wrapper";
 import { Profile } from "pages/Profile/Profile";
+import { Subjects } from "pages/Subjects/Subjects";
 import { Teachers } from "pages/Teachers/Teachers";
 import { Welcome } from "pages/Welcome/Welcome";
 import { WorkSpaceLayout } from "pages/WorkSpaceLayout";
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "subjects",
-            element: null,
+            element: <Subjects />,
           },
           {
             path: "teachers",

@@ -19,6 +19,8 @@ export const SidebarContainer = styled.div<SidebarContainerProps>`
     padding: 0;
     width: 90px;
     padding-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `;
 

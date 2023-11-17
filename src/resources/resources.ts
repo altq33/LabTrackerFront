@@ -28,3 +28,11 @@ export const navLinksList: NavigationLink[] = [
     notSelectedIcon: "/src/assets/icons/tasks-list-svgrepo-com-gr.svg",
   },
 ];
+
+export const covers = [
+  "Rectangle 28.jpg",
+  "Rectangle 29.jpg",
+  "Rectangle 30.jpg",
+  "Rectangle 31.jpg",
+  "Rectangle 32.jpg",
+];

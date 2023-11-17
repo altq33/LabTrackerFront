@@ -1,4 +1,4 @@
-import { TeacherState, UserState } from "types/store";
+import { SubjectState, TeacherState, UserState } from "types/store";
 
 export const initialUserState: UserState = {
   user: null,
@@ -11,4 +11,10 @@ export const initialTeachersState: TeacherState = {
   error: null,
   loading: false,
   teachers: [],
+};
+
+export const initialSubjectsState: SubjectState = {
+  loading: false,
+  error: null,
+  subjects: [],
 };

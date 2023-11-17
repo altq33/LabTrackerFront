@@ -1,4 +1,5 @@
-import { Teacher } from "./api";
+import { ReactElement } from "react";
+import { Subject, Task } from "./api";
 
 export interface NavigationLink {
   path: string;
@@ -22,13 +23,24 @@ export interface SidebarProps {
   onOpen: () => void;
 }
 
-export interface TeacherListProps {
-  data: Teacher[];
+export interface ListComponentProps<T> {
+  data: T[];
 }
-
-export interface TeacherListItemProps extends Teacher {}
 
 export interface TeachersFormProps {
   isOpen: boolean;
   onClose: () => void;
+}
+
+export interface SidebarListProps {
+  title: string;
+  data: Subject[] | Extract<Task, Subject["tasks_count"]>[];
+  render: (id: string, title: string, count?: number) => ReactElement;
+  onAdd: () => void;
+}
+
+export interface SubjectSidebarListItemProps {
+  id: string;
+  name: string;
+  count: number;
 }

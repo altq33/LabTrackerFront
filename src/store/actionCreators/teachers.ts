@@ -24,7 +24,7 @@ export const getAllTeachers = () => {
         } else {
           dispatch({
             type: TeacherActionsType.ERROR_TEACHER,
-            payload: "Teacher loading error",
+            payload: "Teachers loading error",
           });
         }
       }

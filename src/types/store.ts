@@ -3,7 +3,7 @@ import { rootReducer } from "store/reducers";
 import { AnyAction } from "redux";
 // eslint-disable-next-line import/named
 import { ThunkDispatch } from "redux-thunk";
-import { Teacher } from "./api";
+import { Subject, Teacher } from "./api";
 
 export interface User {
   email: string;
@@ -24,12 +24,27 @@ export interface TeacherState {
   teachers: Teacher[];
 }
 
+export interface SubjectState {
+  loading: boolean;
+  error: null | string;
+  subjects: Subject[];
+}
+
 export enum TeacherActionsType {
   FETCH_TEACHER = "FETCH_TEACHER",
   ERROR_TEACHER = "ERROR_TEACHER",
   ADD_TEACHER = "ADD_TEACHER",
   DELETE_TEACHER = "DELETE_TEACHER",
   GET_ALL_TEACHERS = "GET_ALL_TEACHERS",
+  RESET = "RESET",
+}
+
+export enum SubjectActionsType {
+  FETCH_SUBJECT = "FETCH_SUBJECT",
+  ERROR_SUBJECT = "ERROR_SUBJECT",
+  ADD_SUBJECT = "ADD_SUBJECT",
+  DELETE_SUBJECT = "DELETE_SUBJECT",
+  GET_ALL_SUBJECTS = "GET_ALL_SUBJECTS",
   RESET = "RESET",
 }
 
@@ -61,6 +76,34 @@ export interface TeacherReset {
   type: TeacherActionsType.RESET;
 }
 
+export interface SubjectFetchAction {
+  type: SubjectActionsType.FETCH_SUBJECT;
+}
+
+export interface SubjectErrorAction {
+  type: SubjectActionsType.ERROR_SUBJECT;
+  payload: SubjectState["error"];
+}
+
+export interface SubjectAddAction {
+  type: SubjectActionsType.ADD_SUBJECT;
+  payload: Subject;
+}
+
+export interface SubjectsGetAllAction {
+  type: SubjectActionsType.GET_ALL_SUBJECTS;
+  payload: Subject[];
+}
+
+export interface SubjectDeleteAction {
+  type: SubjectActionsType.DELETE_SUBJECT;
+  payload: Subject["id"];
+}
+
+export interface SubjectReset {
+  type: SubjectActionsType.RESET;
+}
+
 export enum UserActionsType {
   LOG = "LOG",
   LOGOUT = "LOGOUT",
@@ -75,6 +118,14 @@ export type TeacherAction =
   | TeacherFetchAction
   | TeachersGetAction
   | TeacherReset;
+
+export type SubjectAction =
+  | SubjectAddAction
+  | SubjectDeleteAction
+  | SubjectErrorAction
+  | SubjectFetchAction
+  | SubjectsGetAllAction
+  | SubjectReset;
 
 export interface LogAction {
   type: UserActionsType.LOG;

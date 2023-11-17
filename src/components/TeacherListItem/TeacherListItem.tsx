@@ -1,12 +1,12 @@
-import { TeacherListItemProps } from "types/props";
 import * as S from "./styles";
 import { useState } from "react";
 import dropdownIcon from "assets/icons/dropdown-arrow-svgrepo-com.svg";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "types/store";
 import { deleteTeacher } from "store/actionCreators/teachers";
+import { Teacher } from "types/api";
 
-export const TeacherListItem: React.FC<TeacherListItemProps> = ({
+export const TeacherListItem: React.FC<Teacher> = ({
   id,
   name,
   surname,

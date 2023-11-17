@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 import { NavigationProps } from "types/props";
 import { TeacherState } from "types/store";
+import { SubjectState } from "../types/store";
 
 const LinkList = styled.ul`
   width: 217px;
@@ -56,8 +57,21 @@ const LinkListItem = styled.li`
 
 export const Navigation: React.FC<NavigationProps> = ({ links }) => {
   const state = useSelector(
-    (state: { teacher: TeacherState }) => state.teacher,
+    (state: { teacher: TeacherState; subject: SubjectState }) => state,
   );
+
+  const getCount = (text: string): number => {
+    switch (text) {
+      case "teachers":
+        return state.teacher.teachers.length;
+      case "subjects":
+        return state.subject.subjects.length;
+      case "tasks":
+        return 0;
+      default:
+        return 0;
+    }
+  };
 
   return (
     <nav>
@@ -69,7 +83,7 @@ export const Navigation: React.FC<NavigationProps> = ({ links }) => {
               <img src={link.notSelectedIcon} alt="" />
               <img src={link.selectedIcon} alt="" />
               <span>{link.text}</span>
-              <span>{state.teachers.length || null}</span>
+              <span>{getCount(link.text.toLowerCase())}</span>
             </LinkListItem>
           </NavigationLink>
         ))}
