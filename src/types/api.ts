@@ -53,7 +53,7 @@ export interface Subject {
   id: string;
   name: string;
   course: number;
-  teacher: Teacher;
+  teacher: Teacher | null;
   tasks_count: number;
   tasks: Task[];
 }

@@ -16,7 +16,11 @@ export const SubjectListItem: React.FC<Subject> = ({
           <S.TasksCount id={id}>{tasks_count}</S.TasksCount>
           <S.TextContainer>
             <S.Name>{name}</S.Name>
-            <S.TeacherName>{`${teacher.surname} ${teacher.name[0]}.`}</S.TeacherName>
+            <S.TeacherName>
+              {teacher
+                ? `${teacher.surname} ${teacher.name[0]}.`
+                : "No teacher"}
+            </S.TeacherName>
           </S.TextContainer>
         </S.InfoContainer>
         <S.AddedInfoContainer>

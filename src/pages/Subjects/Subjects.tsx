@@ -14,6 +14,7 @@ export const Subjects = () => {
   useLayoutEffect(() => {
     dispatch(getAllSubjects());
   }, [dispatch]);
+  console.log(state);
 
   return (
     <S.SubjectsContainer>
