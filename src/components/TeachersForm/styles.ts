@@ -14,7 +14,7 @@ export const FormContainer = styled.div<FormContainerProps>`
   transform: translate(-50%, 50%);
   bottom: ${(props) => (props.isOpen ? "50%" : "-100%")};
   width: 50%;
-  height: 60vh;
+  height: 80vh;
   background-color: ${({ theme }) => theme.dullColors.sectionsBg};
   border: 1px solid ${({ theme }) => theme.dullColors.border};
   z-index: 3;
@@ -93,8 +93,8 @@ export const Submit = styled.input`
   background-repeat: no-repeat;
   color: white;
   align-self: center;
+  font-size: 20px;
   @media screen and (max-width: 530px) {
-    font-size: 20px;
     width: 80%;
   }
   cursor: pointer;

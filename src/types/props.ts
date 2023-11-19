@@ -36,11 +36,31 @@ export interface SidebarListProps {
   title: string;
   data: Subject[] | Extract<Task, Subject["tasks_count"]>[];
   render: (id: string, title: string, count?: number) => ReactElement;
-  onAdd: () => void;
+  link: string;
 }
 
 export interface SubjectSidebarListItemProps {
   id: string;
   name: string;
   count: number;
+}
+
+export interface NumberPickerProps {
+  value: number;
+  onChange: (value: number) => void;
+  style?: React.CSSProperties;
+  max?: number;
+  min?: number;
+  readOnly?: boolean;
+}
+
+export interface SelectTeacherOptions {
+  value: string | null;
+  label: string;
+}
+
+export interface FormSelectProps {
+  onChange: (value: SelectTeacherOptions) => void;
+  options: SelectTeacherOptions[];
+  value: SelectTeacherOptions;
 }

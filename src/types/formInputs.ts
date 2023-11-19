@@ -1,3 +1,5 @@
+import { SelectTeacherOptions } from "./props";
+
 export interface RegFormInputs {
   username: string;
   email: string;
@@ -15,4 +17,10 @@ export interface TeacherFormInputs {
   surname: string;
   father_name: string;
   phone_number: string;
+}
+
+export interface SubjectFormInputs {
+  name: string;
+  course: number;
+  teacher_id: SelectTeacherOptions;
 }

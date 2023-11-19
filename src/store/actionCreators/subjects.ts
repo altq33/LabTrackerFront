@@ -2,7 +2,7 @@
 import { AxiosError } from "axios";
 import { $api } from "http/index";
 import { Dispatch } from "redux";
-import { Subject } from "types/api";
+import { PostSubject, Subject } from "types/api";
 import { SubjectAction, SubjectActionsType } from "types/store";
 
 export const getAllSubjects = () => {
@@ -28,6 +28,24 @@ export const getAllSubjects = () => {
           });
         }
       }
+    }
+  };
+};
+
+export const addSubject = (data: PostSubject) => {
+  return async (dispatch: Dispatch<SubjectAction>) => {
+    try {
+      dispatch({ type: SubjectActionsType.FETCH_SUBJECT });
+      const response = await $api.post<Subject>(`/subjects`, data);
+      dispatch({
+        type: SubjectActionsType.ADD_SUBJECT,
+        payload: response.data,
+      });
+    } catch (e: unknown) {
+      dispatch({
+        type: SubjectActionsType.ERROR_SUBJECT,
+        payload: "Add Error",
+      });
     }
   };
 };

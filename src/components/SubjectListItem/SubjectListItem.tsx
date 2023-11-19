@@ -13,7 +13,7 @@ export const SubjectListItem: React.FC<Subject> = ({
       <S.Cover id={id} />
       <S.Container>
         <S.InfoContainer>
-          <S.TasksCount id={id}>{tasks_count}</S.TasksCount>
+          <S.TasksCount id={id}>{tasks_count ?? 0}</S.TasksCount>
           <S.TextContainer>
             <S.Name>{name}</S.Name>
             <S.TeacherName>

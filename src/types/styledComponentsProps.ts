@@ -48,3 +48,8 @@ export interface FormContainerProps {
 export interface CoverProps {
   id: string;
 }
+
+export interface SelectItemContainerProps {
+  isFocused: boolean;
+  isSelected: boolean;
+}

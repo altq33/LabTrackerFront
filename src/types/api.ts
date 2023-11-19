@@ -54,6 +54,12 @@ export interface Subject {
   name: string;
   course: number;
   teacher: Teacher | null;
-  tasks_count: number;
+  tasks_count: number | null;
   tasks: Task[];
+}
+
+export interface PostSubject {
+  name: string;
+  course: number;
+  teacher_id: string | null;
 }

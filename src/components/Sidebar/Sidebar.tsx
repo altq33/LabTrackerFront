@@ -26,15 +26,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           title={"Subjects"}
           data={state.subject.subjects}
           render={(id, title, count) => (
-            <SubjectSidebarListItem id={id} name={title} count={count!} />
+            <SubjectSidebarListItem
+              key={id}
+              id={id}
+              name={title}
+              count={count!}
+            />
           )}
-          onAdd={() => {}}
+          link="subjects?openForm=true"
         />
         <SidebarList
           title={"Tasks"}
           data={[]}
           render={(id, title, count) => <div>{title + count}</div>}
-          onAdd={() => {}}
+          link=""
         />
         <MiniProfile
           name={state.user.user?.username ?? ""}

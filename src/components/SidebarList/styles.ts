@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import addIcon from "assets/icons/addsbtn.svg";
+import { NavLink } from "react-router-dom";
 
 export const ListContainer = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ export const Title = styled.h2`
   text-transform: uppercase;
 `;
 
-export const AddBtn = styled.button`
+export const AddBtn = styled(NavLink)`
   flex-shrink: 0;
   background: transparent;
   cursor: pointer;

@@ -72,7 +72,7 @@ export const TeachersForm: React.FC<TeachersFormProps> = ({
             errors.phone_number?.message ||
             errors.surname?.message}
         </S.ErrorContainer>
-        <S.Submit type="submit" disabled={!isValid} />
+        <S.Submit type="submit" disabled={!isValid} value="Add" />
       </S.AddForm>
     </S.FormContainer>
   );
