@@ -1,5 +1,6 @@
 import { Wrapper } from "components/Wrapper";
 import { Profile } from "pages/Profile/Profile";
+import { SubjectPage } from "pages/Subject/SubjectPage";
 import { Subjects } from "pages/Subjects/Subjects";
 import { Teachers } from "pages/Teachers/Teachers";
 import { Welcome } from "pages/Welcome/Welcome";
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
           {
             path: "subjects",
             element: <Subjects />,
+          },
+          {
+            path: "subjects/:id",
+            element: <SubjectPage />,
           },
           {
             path: "teachers",

@@ -8,11 +8,13 @@ import { SubjectState, UserState } from "types/store";
 import { SidebarProps } from "types/props";
 import { SidebarList } from "components/SidebarList/SidebarList";
 import { SubjectSidebarListItem } from "components/SubjectSidebarListItem/SubjectSidebarListItem";
+import useWindowHeight from "hooks/useWindowHeight";
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const state = useSelector(
     (state: { user: UserState; subject: SubjectState }) => state,
   );
+  const windowHeight = useWindowHeight();
 
   return (
     <div>
@@ -35,12 +37,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           )}
           link="subjects?openForm=true"
         />
-        <SidebarList
-          title={"Tasks"}
-          data={[]}
-          render={(id, title, count) => <div>{title + count}</div>}
-          link=""
-        />
+        {windowHeight > 900 && (
+          <SidebarList
+            title={"Tasks"}
+            data={[]}
+            render={(id, title, count) => <div>{title + count}</div>}
+            link=""
+          />
+        )}
         <MiniProfile
           name={state.user.user?.username ?? ""}
           link="/workspace/profile"
