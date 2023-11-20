@@ -64,3 +64,16 @@ export interface FormSelectProps {
   options: SelectTeacherOptions[];
   value: SelectTeacherOptions;
 }
+
+export interface PathTrackProps {
+  mainId: string;
+  secondaryId: string;
+  mainTitle: string;
+  secondaryTitle: string;
+  category: string;
+  icon: string;
+}
+
+export interface TasksOwner {
+  tasks: Task[];
+}

@@ -53,3 +53,15 @@ export interface SelectItemContainerProps {
   isFocused: boolean;
   isSelected: boolean;
 }
+
+export interface TopColorIndicatorProps {
+  id: string;
+}
+
+export interface ColorEntityIndicatorProps {
+  id: string;
+}
+
+export interface Colored {
+  color: string;
+}

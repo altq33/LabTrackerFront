@@ -2,7 +2,7 @@
 import { NavLink } from "react-router-dom";
 import { covers } from "./../../resources/resources";
 import { styled } from "styled-components";
-import { CoverProps } from "types/styledComponentsProps";
+import { Colored, CoverProps } from "types/styledComponentsProps";
 
 export const SubjectListItemContainer = styled(NavLink)`
   display: flex;
@@ -99,11 +99,11 @@ export const AddedInfoContainer = styled.div`
   gap: 3px;
 `;
 
-export const Badge = styled.div`
+export const Badge = styled.div<Colored>`
   padding: 4px 10px;
   border-radius: 33px;
-  background-color: ${({ theme }) => theme.brightColors.pink + "5c"};
-  color: ${({ theme }) => theme.brightColors.pink};
+  background-color: ${({ color }) => color + "5c"};
+  color: ${({ color }) => color};
   font-size: 12px;
   font-weight: bold;
   display: flex;

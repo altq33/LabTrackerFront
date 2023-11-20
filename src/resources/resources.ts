@@ -36,3 +36,11 @@ export const covers = [
   "Rectangle 31.jpg",
   "Rectangle 32.jpg",
 ];
+
+export const coversBig = [
+  "cover28.jpg",
+  "cover29.jpg",
+  "cover30.jpg",
+  "cover31.jpg",
+  "cover32.jpg",
+];

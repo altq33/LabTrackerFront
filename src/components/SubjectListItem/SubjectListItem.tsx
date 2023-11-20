@@ -24,7 +24,7 @@ export const SubjectListItem: React.FC<Subject> = ({
           </S.TextContainer>
         </S.InfoContainer>
         <S.AddedInfoContainer>
-          <S.Badge>Course: {course}</S.Badge>
+          <S.Badge color="#FD71AF">Course: {course}</S.Badge>
         </S.AddedInfoContainer>
       </S.Container>
     </S.SubjectListItemContainer>
