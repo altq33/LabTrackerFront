@@ -42,9 +42,9 @@ export interface Teacher {
 export interface Task {
   id: string;
   name: string;
-  deadline: string;
-  description: string;
-  type: TaskType;
+  deadline: string | null;
+  description: string | null;
+  type: TaskType | null;
   priority: TaskPriority;
   status: boolean;
 }

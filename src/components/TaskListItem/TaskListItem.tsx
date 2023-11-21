@@ -23,14 +23,18 @@ export const TaskListItem: React.FC<
     case TaskType.typical:
       color = "#FD71AF";
       break;
+    default:
+      color = "#00B884";
   }
 
   return (
     <S.NavigationLink to={`/workspace/tasks/${id}`}>
       <S.Container>
+        type && (
         <S.BadgeContainer>
           <Badge color={color}>{type}</Badge>
         </S.BadgeContainer>
+        )
         <S.NameContainer>
           <S.Icon src={docIcon} />
           <S.Name>{name}</S.Name>
