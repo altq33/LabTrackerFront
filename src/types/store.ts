@@ -3,7 +3,7 @@ import { rootReducer } from "store/reducers";
 import { AnyAction } from "redux";
 // eslint-disable-next-line import/named
 import { ThunkDispatch } from "redux-thunk";
-import { Subject, Task, Teacher } from "./api";
+import { AugmentedTask, Subject, Teacher } from "./api";
 
 export interface User {
   email: string;
@@ -33,7 +33,7 @@ export interface SubjectState {
 export interface TaskState {
   loading: boolean;
   error: null | string;
-  task: Task[];
+  tasks: AugmentedTask[];
 }
 
 export enum TeacherActionsType {
@@ -60,6 +60,7 @@ export enum TaskActionsType {
   ADD_TASK = "ADD_TASK",
   DELETE_TASK = "DELETE_TASK",
   GET_ALL_TASKS = "GET_ALL_TASKS",
+  UPDATE_TASK = "UPDATE_TASK",
   RESET = "RESET",
 }
 
@@ -102,17 +103,22 @@ export interface TaskErrorAction {
 
 export interface TaskAddAction {
   type: TaskActionsType.ADD_TASK;
-  payload: Task;
+  payload: AugmentedTask;
+}
+
+export interface TaskUpdateAction {
+  type: TaskActionsType.UPDATE_TASK;
+  payload: AugmentedTask;
 }
 
 export interface TasksGetAllAction {
   type: TaskActionsType.GET_ALL_TASKS;
-  payload: Task[];
+  payload: AugmentedTask[];
 }
 
 export interface TaskDeleteAction {
   type: TaskActionsType.DELETE_TASK;
-  payload: Task["id"];
+  payload: AugmentedTask["id"];
 }
 
 export interface TaskReset {
@@ -176,6 +182,7 @@ export type TaskAction =
   | TaskErrorAction
   | TaskFetchAction
   | TasksGetAllAction
+  | TaskUpdateAction
   | TaskReset;
 
 export interface LogAction {

@@ -49,6 +49,10 @@ export interface Task {
   status: boolean;
 }
 
+export interface AugmentedTask extends Task {
+  subject: Omit<Subject, "tasks_count" | "tasks">;
+}
+
 export interface Subject {
   id: string;
   name: string;

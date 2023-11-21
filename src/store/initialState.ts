@@ -1,4 +1,4 @@
-import { SubjectState, TeacherState, UserState } from "types/store";
+import { SubjectState, TaskState, TeacherState, UserState } from "types/store";
 
 export const initialUserState: UserState = {
   user: null,
@@ -17,4 +17,10 @@ export const initialSubjectsState: SubjectState = {
   loading: false,
   error: null,
   subjects: [],
+};
+
+export const initialTaskState: TaskState = {
+  loading: false,
+  error: null,
+  tasks: [],
 };
