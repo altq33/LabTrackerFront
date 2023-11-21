@@ -41,3 +41,7 @@ export interface Colored {
 export interface Opened {
   isOpen: boolean;
 }
+
+export interface Checked {
+  isChecked: boolean;
+}

@@ -1,6 +1,7 @@
 import { ListComponentProps } from "types/props";
 import * as S from "./styles";
 import { AugmentedTask } from "types/api";
+import { AllTaskListItem } from "components/AllTaskListItem/AllTaskListItem";
 
 export const AllTaskList: React.FC<ListComponentProps<AugmentedTask>> = ({
   data,
@@ -8,7 +9,7 @@ export const AllTaskList: React.FC<ListComponentProps<AugmentedTask>> = ({
   return (
     <S.List>
       {data.map((el) => (
-        <div>{el.name}</div>
+        <AllTaskListItem {...el} />
       ))}
     </S.List>
   );

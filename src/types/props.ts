@@ -73,3 +73,8 @@ export interface PathTrackProps {
   category: string;
   icon: string;
 }
+
+export type AllTaskListItemProps = Pick<
+  Task,
+  "name" | "status" | "priority" | "type" | "deadline" | "id"
+>;

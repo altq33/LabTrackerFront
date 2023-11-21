@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as S from "./styles";
-import { useState, useLayoutEffect, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { AppDispatch, TaskState } from "types/store";
 import { getAllTasks } from "store/actionCreators/tasks";

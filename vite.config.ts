@@ -14,6 +14,7 @@ export default defineConfig({
       resources: "/src/resources",
       store: "/src/store",
       http: "/src/http",
+      util: "/src/util",
     },
   },
 });

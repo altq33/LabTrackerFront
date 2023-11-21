@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 import { NavigationProps } from "types/props";
-import { TeacherState } from "types/store";
+import { TaskState, TeacherState } from "types/store";
 import { SubjectState } from "../types/store";
 
 const LinkList = styled.ul`
@@ -57,7 +57,11 @@ const LinkListItem = styled.li`
 
 export const Navigation: React.FC<NavigationProps> = ({ links }) => {
   const state = useSelector(
-    (state: { teacher: TeacherState; subject: SubjectState }) => state,
+    (state: {
+      teacher: TeacherState;
+      subject: SubjectState;
+      task: TaskState;
+    }) => state,
   );
 
   const getCount = (text: string): number => {
@@ -67,7 +71,7 @@ export const Navigation: React.FC<NavigationProps> = ({ links }) => {
       case "subjects":
         return state.subject.subjects.length;
       case "tasks":
-        return 0;
+        return state.task.tasks.length;
       default:
         return 0;
     }

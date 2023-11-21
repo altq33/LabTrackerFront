@@ -68,7 +68,7 @@ export const deleteTask = (id: string) => {
   };
 };
 
-export const updateTask = (id: string, data: Omit<Task, "id" | "status">) => {
+export const updateTask = (id: string, data: Partial<Omit<Task, "id">>) => {
   return async (dispatch: Dispatch<TaskAction>) => {
     try {
       dispatch({ type: TaskActionsType.FETCH_TASK });
