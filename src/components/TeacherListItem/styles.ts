@@ -1,13 +1,8 @@
 import { styled } from "styled-components";
-import {
-  DeleteBtnProps,
-  DropdownIconProps,
-  TeacherAvatarProps,
-  TeacherListItemContainerProps,
-} from "types/styledComponentsProps";
+import { TeacherAvatarProps, Opened } from "types/styledComponentsProps";
 import deleteIcon from "assets/icons/delete-1487-svgrepo-com.svg";
 
-export const TeacherListItemContainer = styled.li<TeacherListItemContainerProps>`
+export const TeacherListItemContainer = styled.li<Opened>`
   position: relative;
   background-color: ${({ theme }) => theme.dullColors.sectionsBg};
   height: 58px;
@@ -54,7 +49,7 @@ export const TeacherAvatar = styled.div<TeacherAvatarProps>`
   }
 `;
 
-export const DropdownIcon = styled.img<DropdownIconProps>`
+export const DropdownIcon = styled.img<Opened>`
   width: 30px;
   height: 30px;
   transform: rotate(${({ isOpen }) => (isOpen ? "180deg" : "0")});
@@ -96,7 +91,7 @@ export const UnderFullNameTitle = styled.h2`
   text-overflow: ellipsis;
 `;
 
-export const DeleteBtn = styled.button<DeleteBtnProps>`
+export const DeleteBtn = styled.button<Opened>`
   width: 30px;
   height: 30px;
   display: ${(props) => (props.isOpen ? "block" : "none")};

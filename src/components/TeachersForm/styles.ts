@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
-import { FormContainerProps } from "types/styledComponentsProps";
+import { Opened } from "types/styledComponentsProps";
 import closeIcon from "assets/icons/close-square-svgrepo-com.svg";
 import submitBg from "assets/img/14571492_5495722 3.jpg";
 import { ErrorBlock } from "components/RegForm/styles";
 
-export const FormContainer = styled.div<FormContainerProps>`
+export const FormContainer = styled.div<Opened>`
   display: flex;
   flex-direction: column;
   align-items: center;

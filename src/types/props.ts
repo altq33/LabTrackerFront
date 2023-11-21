@@ -73,7 +73,3 @@ export interface PathTrackProps {
   category: string;
   icon: string;
 }
-
-export interface TasksOwner {
-  tasks: Task[];
-}

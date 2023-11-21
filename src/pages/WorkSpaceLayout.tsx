@@ -3,13 +3,10 @@ import { Sidebar } from "components/Sidebar/Sidebar";
 import { useState } from "react";
 import { Outlet } from "react-router";
 import { styled } from "styled-components";
-import {
-  OpenBtnProps,
-  WorkSpaceWrapperProps,
-} from "types/styledComponentsProps";
+import { Opened } from "types/styledComponentsProps";
 import logoIcon from "assets/icons/logo.svg";
 
-const WorkSpaceWrapper = styled.div<WorkSpaceWrapperProps>`
+const WorkSpaceWrapper = styled.div<Opened>`
   width: 100%;
   height: 100%;
   padding-left: ${({ isOpen }) => (isOpen ? "257px" : 0)};
@@ -19,7 +16,7 @@ const WorkSpaceWrapper = styled.div<WorkSpaceWrapperProps>`
   }
 `;
 
-const OpenBtn = styled.button<OpenBtnProps>`
+const OpenBtn = styled.button<Opened>`
   width: 50px;
   height: 50px;
   border-bottom-right-radius: 10px;

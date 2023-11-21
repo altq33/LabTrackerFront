@@ -1,11 +1,12 @@
-import { TasksOwner } from "types/props";
+import { ListComponentProps } from "types/props";
 import * as S from "./styles";
 import { TaskListItem } from "components/TaskListItem/TaskListItem";
+import { Task } from "types/api";
 
-export const TaskList: React.FC<TasksOwner> = ({ tasks }) => {
+export const TaskList: React.FC<ListComponentProps<Task>> = ({ data }) => {
   return (
     <S.List>
-      {tasks.map((el) => (
+      {data.map((el) => (
         <TaskListItem
           type={el.type}
           name={el.name}

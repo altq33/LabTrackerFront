@@ -1,10 +1,8 @@
-import { departure } from "pages/Profile/styles";
 import { styled } from "styled-components";
 import addIcon from "assets/icons/add-square-svgrepo-com.svg";
 
 export const TeachersContainer = styled.div`
   position: relative;
-  animation: ${departure} 0.65s linear;
   display: flex;
   width: 75%;
   flex-direction: column;

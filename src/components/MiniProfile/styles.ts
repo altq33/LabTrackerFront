@@ -2,6 +2,12 @@ import { styled } from "styled-components";
 import settingIcon from "assets/icons/Setting.svg";
 import { NavLink } from "react-router-dom";
 
+export const ToBottomContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+`;
+
 export const MiniProfileContainer = styled(NavLink)`
   width: 207px;
   padding: 8px;

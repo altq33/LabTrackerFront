@@ -66,7 +66,7 @@ export const SubjectPage = () => {
           </S.StatContainer>
         </S.InfoContainer>
       </S.FullCover>
-      <TaskListDesk tasks={subject.tasks} />
+      <TaskListDesk data={subject.tasks} />
     </S.Container>
   ) : (
     <h2>No subject with this id</h2>

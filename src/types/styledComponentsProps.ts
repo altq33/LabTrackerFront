@@ -1,7 +1,3 @@
-export interface SidebarContainerProps {
-  isOpen: boolean;
-}
-
 export interface NavigationLinkProps {
   selectedMarker: string;
   notSelectedMarker: string;
@@ -17,32 +13,8 @@ export interface BackgroundLineProps {
   color: string;
 }
 
-export interface WorkSpaceWrapperProps {
-  isOpen: boolean;
-}
-
-export interface OpenBtnProps {
-  isOpen: boolean;
-}
-
 export interface TeacherAvatarProps {
   id: string;
-}
-
-export interface TeacherListItemContainerProps {
-  isOpen: boolean;
-}
-
-export interface DropdownIconProps {
-  isOpen: boolean;
-}
-
-export interface DeleteBtnProps {
-  isOpen: boolean;
-}
-
-export interface FormContainerProps {
-  isOpen: boolean;
 }
 
 export interface CoverProps {
@@ -64,4 +36,8 @@ export interface ColorEntityIndicatorProps {
 
 export interface Colored {
   color: string;
+}
+
+export interface Opened {
+  isOpen: boolean;
 }

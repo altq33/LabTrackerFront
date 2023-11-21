@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { SidebarContainerProps } from "types/styledComponentsProps";
+import { Opened } from "types/styledComponentsProps";
 
-export const SidebarContainer = styled.div<SidebarContainerProps>`
+export const SidebarContainer = styled.div<Opened>`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -3,7 +3,7 @@ import { rootReducer } from "store/reducers";
 import { AnyAction } from "redux";
 // eslint-disable-next-line import/named
 import { ThunkDispatch } from "redux-thunk";
-import { Subject, Teacher } from "./api";
+import { Subject, Task, Teacher } from "./api";
 
 export interface User {
   email: string;
@@ -30,6 +30,12 @@ export interface SubjectState {
   subjects: Subject[];
 }
 
+export interface TaskState {
+  loading: boolean;
+  error: null | string;
+  task: Task[];
+}
+
 export enum TeacherActionsType {
   FETCH_TEACHER = "FETCH_TEACHER",
   ERROR_TEACHER = "ERROR_TEACHER",
@@ -45,6 +51,15 @@ export enum SubjectActionsType {
   ADD_SUBJECT = "ADD_SUBJECT",
   DELETE_SUBJECT = "DELETE_SUBJECT",
   GET_ALL_SUBJECTS = "GET_ALL_SUBJECTS",
+  RESET = "RESET",
+}
+
+export enum TaskActionsType {
+  FETCH_TASK = "FETCH_TASK",
+  ERROR_TASK = "ERROR_TASK",
+  ADD_TASK = "ADD_TASK",
+  DELETE_TASK = "DELETE_TASK",
+  GET_ALL_TASKS = "GET_ALL_TASKS",
   RESET = "RESET",
 }
 
@@ -74,6 +89,34 @@ export interface TeacherDeleteAction {
 
 export interface TeacherReset {
   type: TeacherActionsType.RESET;
+}
+
+export interface TaskFetchAction {
+  type: TaskActionsType.FETCH_TASK;
+}
+
+export interface TaskErrorAction {
+  type: TaskActionsType.ERROR_TASK;
+  payload: TaskState["error"];
+}
+
+export interface TaskAddAction {
+  type: TaskActionsType.ADD_TASK;
+  payload: Task;
+}
+
+export interface TasksGetAllAction {
+  type: TaskActionsType.GET_ALL_TASKS;
+  payload: Task[];
+}
+
+export interface TaskDeleteAction {
+  type: TaskActionsType.DELETE_TASK;
+  payload: Task["id"];
+}
+
+export interface TaskReset {
+  type: TaskActionsType.RESET;
 }
 
 export interface SubjectFetchAction {
@@ -126,6 +169,14 @@ export type SubjectAction =
   | SubjectFetchAction
   | SubjectsGetAllAction
   | SubjectReset;
+
+export type TaskAction =
+  | TaskAddAction
+  | TaskDeleteAction
+  | TaskErrorAction
+  | TaskFetchAction
+  | TasksGetAllAction
+  | TaskReset;
 
 export interface LogAction {
   type: UserActionsType.LOG;
