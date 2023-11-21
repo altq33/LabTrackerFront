@@ -3,6 +3,7 @@ import { Profile } from "pages/Profile/Profile";
 import { SubjectPage } from "pages/Subject/SubjectPage";
 import { Subjects } from "pages/Subjects/Subjects";
 import { Teachers } from "pages/Teachers/Teachers";
+import { Tasks } from "pages/Tasks/Tasks";
 import { Welcome } from "pages/Welcome/Welcome";
 import { WorkSpaceLayout } from "pages/WorkSpaceLayout";
 import { createBrowserRouter } from "react-router-dom";
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "tasks",
-            element: null,
+            element: <Tasks />,
           },
           {
             path: "profile",

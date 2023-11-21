@@ -30,11 +30,11 @@ export const TaskListItem: React.FC<
   return (
     <S.NavigationLink to={`/workspace/tasks/${id}`}>
       <S.Container>
-        type && (
-        <S.BadgeContainer>
-          <Badge color={color}>{type}</Badge>
-        </S.BadgeContainer>
-        )
+        {type && (
+          <S.BadgeContainer>
+            <Badge color={color}>{type}</Badge>
+          </S.BadgeContainer>
+        )}
         <S.NameContainer>
           <S.Icon src={docIcon} />
           <S.Name>{name}</S.Name>

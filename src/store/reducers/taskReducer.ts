@@ -1,7 +1,7 @@
 import { initialTaskState } from "store/initialState";
 import { TaskAction, TaskActionsType, TaskState } from "types/store";
 
-export const subjectReducer = (
+export const taskReducer = (
   state: TaskState = initialTaskState,
   action: TaskAction,
 ): TaskState => {
@@ -15,6 +15,18 @@ export const subjectReducer = (
         error: null,
         loading: false,
         tasks: [...state.tasks, action.payload],
+      };
+    case TaskActionsType.UPDATE_TASK:
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        tasks: state.tasks.map((task) => {
+          if (task.id === action.payload.id) {
+            return action.payload;
+          }
+          return task;
+        }),
       };
     case TaskActionsType.DELETE_TASK:
       return {
