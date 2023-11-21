@@ -13,11 +13,7 @@ export interface BackgroundLineProps {
   color: string;
 }
 
-export interface TeacherAvatarProps {
-  id: string;
-}
-
-export interface CoverProps {
+export interface IDProps {
   id: string;
 }
 
@@ -27,10 +23,6 @@ export interface SelectItemContainerProps {
 }
 
 export interface TopColorIndicatorProps {
-  id: string;
-}
-
-export interface ColorEntityIndicatorProps {
   id: string;
 }
 
@@ -44,4 +36,8 @@ export interface Opened {
 
 export interface Checked {
   isChecked: boolean;
+}
+
+export interface Sized {
+  size: number;
 }

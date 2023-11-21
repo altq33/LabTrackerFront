@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { TeacherAvatarProps, Opened } from "types/styledComponentsProps";
+import { IDProps, Opened } from "types/styledComponentsProps";
 import deleteIcon from "assets/icons/delete-1487-svgrepo-com.svg";
 
 export const TeacherListItemContainer = styled.li<Opened>`
@@ -31,7 +31,7 @@ export const Label = styled.label`
   gap: 10px;
 `;
 
-export const TeacherAvatar = styled.div<TeacherAvatarProps>`
+export const TeacherAvatar = styled.div<IDProps>`
   height: 42px;
   width: 42px;
   flex-shrink: 0;

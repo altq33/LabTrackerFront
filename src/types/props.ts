@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Subject, Task } from "./api";
+import { AugmentedTask, Subject, Task } from "./api";
 
 export interface NavigationLink {
   path: string;
@@ -34,7 +34,7 @@ export interface TeachersFormProps {
 
 export interface SidebarListProps {
   title: string;
-  data: Subject[] | Extract<Task, Subject["tasks_count"]>[];
+  data: Subject[] | (AugmentedTask & Partial<Pick<Subject, "tasks_count">>)[];
   render: (id: string, title: string, count?: number) => ReactElement;
   link: string;
 }
@@ -78,3 +78,8 @@ export type AllTaskListItemProps = Pick<
   Task,
   "name" | "status" | "priority" | "type" | "deadline" | "id"
 >;
+
+export interface TaskSidebarListItemProps {
+  name: string;
+  id: string;
+}

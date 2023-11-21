@@ -2,7 +2,7 @@
 import { NavLink } from "react-router-dom";
 import { covers } from "./../../resources/resources";
 import { styled } from "styled-components";
-import { Colored, CoverProps } from "types/styledComponentsProps";
+import { Colored, IDProps } from "types/styledComponentsProps";
 
 export const SubjectListItemContainer = styled(NavLink)`
   display: flex;
@@ -19,7 +19,7 @@ export const SubjectListItemContainer = styled(NavLink)`
   }
 `;
 
-export const Cover = styled.div<CoverProps>`
+export const Cover = styled.div<IDProps>`
   max-width: 100%;
   min-width: 100%;
   height: 112px;
@@ -49,7 +49,7 @@ export const InfoContainer = styled.div`
   gap: 7px;
 `;
 
-export const TasksCount = styled.div<CoverProps>`
+export const TasksCount = styled.div<IDProps>`
   width: 38px;
   height: 38px;
   display: flex;

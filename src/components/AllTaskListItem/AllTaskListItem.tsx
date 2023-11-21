@@ -2,10 +2,11 @@ import { AllTaskListItemProps } from "types/props";
 import * as S from "./styles";
 import { Badge } from "components/SubjectListItem/styles";
 import { getBadgeColor, getPriorityColor, normalizeDate } from "util/index";
-import { BadgeContainer } from "components/TaskListItem/styles";
+import { BadgeContainer, NavigationLink } from "components/TaskListItem/styles";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "types/store";
 import { updateTask } from "store/actionCreators/tasks";
+import { MouseEvent } from "react";
 
 export const AllTaskListItem: React.FC<AllTaskListItemProps> = ({
   name,
@@ -21,23 +22,26 @@ export const AllTaskListItem: React.FC<AllTaskListItemProps> = ({
   const priorityColor = getPriorityColor(priority);
   const normalizedDate = normalizeDate(deadline || "");
 
-  const updateTaskStatus = () => {
+  const updateTaskStatus = (e: MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
     dispatch(updateTask(id, { status: !status }));
   };
 
   return (
-    <S.Container>
-      <S.TopContainer>
-        <S.Checkbox isChecked={status} onClick={updateTaskStatus} />
-        <S.Name isChecked={status}>{name}</S.Name>
-      </S.TopContainer>
-      <S.BottomContainer>
-        <BadgeContainer>
-          {type && <Badge color={typeColor}>{type}</Badge>}
-          <Badge color={priorityColor}>{priority}</Badge>
-        </BadgeContainer>
-        {deadline && <S.Date>{normalizedDate}</S.Date>}
-      </S.BottomContainer>
-    </S.Container>
+    <NavigationLink to={`/workspace/tasks/${id}`}>
+      <S.Container>
+        <S.TopContainer>
+          <S.Checkbox isChecked={status} onClick={updateTaskStatus} />
+          <S.Name isChecked={status}>{name}</S.Name>
+        </S.TopContainer>
+        <S.BottomContainer>
+          <BadgeContainer>
+            {type && <Badge color={typeColor}>{type}</Badge>}
+            <Badge color={priorityColor}>{priority}</Badge>
+          </BadgeContainer>
+          {deadline && <S.Date>{normalizedDate}</S.Date>}
+        </S.BottomContainer>
+      </S.Container>
+    </NavigationLink>
   );
 };

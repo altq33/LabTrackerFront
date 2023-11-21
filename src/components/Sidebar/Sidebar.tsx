@@ -4,15 +4,17 @@ import { Navigation } from "../Navigation";
 import { navLinksList } from "resources/resources";
 import { MiniProfile } from "components/MiniProfile/MiniProfile";
 import { useSelector } from "react-redux";
-import { SubjectState, UserState } from "types/store";
+import { SubjectState, TaskState, UserState } from "types/store";
 import { SidebarProps } from "types/props";
 import { SidebarList } from "components/SidebarList/SidebarList";
 import { SubjectSidebarListItem } from "components/SubjectSidebarListItem/SubjectSidebarListItem";
 import useWindowHeight from "hooks/useWindowHeight";
+import { TaskSidebarListItem } from "components/TaskSidebarListItem/TaskSidebarListItem";
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const state = useSelector(
-    (state: { user: UserState; subject: SubjectState }) => state,
+    (state: { user: UserState; subject: SubjectState; task: TaskState }) =>
+      state,
   );
   const windowHeight = useWindowHeight();
 
@@ -40,9 +42,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         {windowHeight > 900 && (
           <SidebarList
             title={"Tasks"}
-            data={[]}
-            render={(id, title, count) => <div>{title + count}</div>}
-            link=""
+            data={state.task.tasks.filter((task) => !task.status)}
+            render={(id, title) => (
+              <TaskSidebarListItem key={id} id={id} name={title} />
+            )}
+            link="tasks?openForm=true"
           />
         )}
         <MiniProfile
