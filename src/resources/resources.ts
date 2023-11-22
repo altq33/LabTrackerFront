@@ -1,4 +1,9 @@
-import { NavigationLink } from "types/props";
+import { TaskPriority, TaskType } from "types/api";
+import {
+  NavigationLink,
+  SelectPriorityOptions,
+  SelectTypeOptions,
+} from "types/props";
 
 export const navLinksList: NavigationLink[] = [
   {
@@ -43,4 +48,19 @@ export const coversBig = [
   "cover30.jpg",
   "cover31.jpg",
   "cover32.jpg",
+];
+
+export const TypeOptions: SelectTypeOptions[] = [
+  { value: null, label: "None" },
+  { value: TaskType.coursework, label: TaskType.coursework },
+  { value: TaskType.lab, label: TaskType.lab },
+  { value: TaskType.presentation, label: TaskType.presentation },
+  { value: TaskType.report, label: TaskType.report },
+  { value: TaskType.typical, label: TaskType.typical },
+];
+
+export const PriorityOptions: SelectPriorityOptions[] = [
+  { value: TaskPriority.low, label: TaskPriority.low },
+  { value: TaskPriority.medium, label: TaskPriority.medium },
+  { value: TaskPriority.high, label: TaskPriority.high },
 ];

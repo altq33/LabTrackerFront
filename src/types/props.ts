@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { AugmentedTask, Subject, Task } from "./api";
+import { AugmentedTask, Subject, Task, TaskPriority, TaskType } from "./api";
 
 export interface NavigationLink {
   path: string;
@@ -60,7 +60,17 @@ export interface SelectTeacherOptions {
 }
 
 export interface SelectSubjectOptions {
-  value: string | null;
+  value: string;
+  label: string;
+}
+
+export interface SelectTypeOptions {
+  value: TaskType | null;
+  label: string;
+}
+
+export interface SelectPriorityOptions {
+  value: TaskPriority;
   label: string;
 }
 
@@ -87,4 +97,10 @@ export type AllTaskListItemProps = Pick<
 export interface TaskSidebarListItemProps {
   name: string;
   id: string;
+}
+
+export interface DateInputProps {
+  value?: string;
+  onClick?: () => void;
+  placeholder?: string;
 }

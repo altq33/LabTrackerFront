@@ -19,6 +19,7 @@ export const FormContainer = styled.div<Opened>`
   border: 1px solid ${({ theme }) => theme.dullColors.border};
   z-index: 3;
   padding: 10px;
+  overflow: auto;
   @media screen and (max-width: 530px) {
     font-size: 20px;
     width: 70%;
@@ -68,6 +69,66 @@ export const Label = styled.label`
   @media screen and (max-width: 530px) {
     font-size: 16px;
   }
+
+  // Переопределение стилей либы
+  .react-datepicker-wrapper {
+    width: 200px !important;
+    display: block !important;
+  }
+
+  .react-datepicker {
+    background-color: #7b68ee;
+    color: white !important;
+  }
+  .react-datepicker__day-name,
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    color: white !important;
+  }
+  .react-datepicker__day--selected {
+    background-color: #fd71af !important;
+  }
+  .react-datepicker__header {
+    background-color: #fd71af !important;
+    color: white !important;
+  }
+  .react-datepicker__current-month {
+    color: white !important;
+  }
+  .react-datepicker__navigation-icon::before {
+    border-color: white !important;
+  }
+  .react-datepicker-time__header {
+    color: white !important;
+  }
+  .react-datepicker__time-list {
+    background-color: #7b68ee;
+    color: white !important;
+  }
+  .react-datepicker__day:hover {
+    background-color: #fd71af !important;
+    color: white !important;
+  }
+  .react-datepicker__time-list-item:hover {
+    background-color: #fd71af !important;
+    color: white !important;
+  }
+  .react-datepicker__time-list--selected:hover {
+    background-color: #fd71af !important;
+    color: white !important;
+  }
+  .react-datepicker__time-container
+    .react-datepicker__time
+    .react-datepicker__time-box
+    ul.react-datepicker__time-list
+    li.react-datepicker__time-list-item--selected {
+    background-color: #fd71af !important;
+    color: white !important;
+  }
+
+  .react-datepicker__close-icon::after {
+    background-color: #7b68ee;
+  }
 `;
 
 export const AddInput = styled.input`
@@ -97,6 +158,7 @@ export const Submit = styled.input`
   @media screen and (max-width: 530px) {
     width: 80%;
   }
+  flex-shrink: 0;
   cursor: pointer;
 `;
 

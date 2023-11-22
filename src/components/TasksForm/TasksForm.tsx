@@ -3,27 +3,22 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { TaskFormInputs } from "types/formInputs";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "types/store";
-import { NumberPicker } from "components/NumberPicker/NumberPicker";
-import { FormSelect } from "components/FormSelect/FormSelect";
 import { useTypedSelector } from "hooks/useTypedSelector";
-import { addTask } from "store/actionCreators/tasks";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AddInputSubject, SubmitSubject } from "components/SubjectsForm/styles";
 import { TeachersFormProps } from "types/props";
+import { DateInput } from "components/DateInput/DateInput";
+import { Area } from "./styles";
+import { PriorityOptions, TypeOptions } from "resources/resources";
+import Select from "react-select";
+import { SubjectSelectItem } from "components/SubjectSelectItem/SubjectSelectItem";
+import { addTask } from "store/actionCreators/tasks";
+import { useLocation } from "react-router-dom";
 
 export const TasksForm: React.FC<TeachersFormProps> = ({ isOpen, onClose }) => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors, isValid },
-  } = useForm<TaskFormInputs>({
-    mode: "onChange",
-    defaultValues: {
-      deadline: new Date(),
-    },
-  });
+  const location = useLocation();
+
   const dispatch: AppDispatch = useDispatch();
   const state = useTypedSelector((state) => {
     return state.subject.subjects.map((el) => ({
@@ -32,9 +27,31 @@ export const TasksForm: React.FC<TeachersFormProps> = ({ isOpen, onClose }) => {
     }));
   });
 
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { isValid },
+  } = useForm<TaskFormInputs>({
+    mode: "onChange",
+    defaultValues: {
+      deadline: new Date(),
+      subject_id: state.find(
+        (el) => el.value === location.state?.selectedSubject,
+      ),
+    },
+  });
+
   const onSubmit: SubmitHandler<TaskFormInputs> = (data) => {
-    console.log(data);
-    // dispatch(addTask(data));
+    dispatch(
+      addTask({
+        ...data,
+        deadline: data.deadline.toISOString(),
+        type: data.type.value,
+        priority: data.priority.value,
+        subject_id: data.subject_id.value,
+      }),
+    );
   };
 
   return (
@@ -57,43 +74,210 @@ export const TasksForm: React.FC<TeachersFormProps> = ({ isOpen, onClose }) => {
             control={control}
             name="deadline"
             render={({ field: { onChange, value } }) => (
-              <DatePicker selected={value} onChange={onChange} />
-            )}
-          />
-        </S.Label>
-        <S.Label>
-          Course
-          <Controller
-            control={control}
-            name="course"
-            render={({ field: { onChange, value } }) => (
-              <NumberPicker
+              <DatePicker
+                selected={value}
                 onChange={onChange}
-                value={value}
-                min={1}
-                max={8}
-                readOnly
+                showTimeSelect
+                isClearable
+                placeholderText="None"
+                customInput={<DateInput />}
               />
             )}
           />
         </S.Label>
         <S.Label>
-          Teacher
+          Description
+          <Area {...register("description")}></Area>
+        </S.Label>
+        <S.Label>
+          Type
           <Controller
             control={control}
-            name="teacher_id"
+            name="type"
+            defaultValue={TypeOptions[0]}
             render={({ field: { onChange, value } }) => (
-              <FormSelect onChange={onChange} options={state} value={value} />
+              <Select
+                options={TypeOptions}
+                value={value}
+                onChange={onChange}
+                menuShouldScrollIntoView
+                styles={{
+                  control: (baseStyles) => ({
+                    ...baseStyles,
+                    borderColor: "#7B68EE",
+                    boxShadow: "none",
+                    ":hover": {
+                      boxShadow: "none",
+                      borderColor: "#7B68EE",
+                    },
+                  }),
+                  container: (baseStyles) => ({
+                    ...baseStyles,
+                    width: "100%",
+                    fontSize: "1.3rem",
+                  }),
+                  indicatorSeparator: () => ({
+                    display: "none",
+                  }),
+                  dropdownIndicator: (baseStyles) => ({
+                    ...baseStyles,
+                    color: "#7B68EE",
+                    opacity: 1,
+                    ":hover": {
+                      color: "#7B68EE",
+                      opacity: 1,
+                    },
+                  }),
+                  menuList: (baseStyles) => ({
+                    ...baseStyles,
+                    padding: 0,
+                  }),
+                  menu: (baseStyles) => ({
+                    ...baseStyles,
+                    backgroundColor: "white",
+                  }),
+                  option: (baseStyles, { isFocused, isSelected }) => ({
+                    ...baseStyles,
+                    ":hover": {
+                      backgroundColor: "#7B68EE",
+                      color: "white",
+                    },
+                    backgroundColor:
+                      isFocused || isSelected ? "#7B68EE" : "white",
+                    color: isFocused || isSelected ? "white" : "black",
+                  }),
+                }}
+              />
             )}
-            defaultValue={state[0]}
           />
         </S.Label>
-
-        <S.ErrorContainer>
-          {errors.course?.message ||
-            errors.name?.message ||
-            errors.teacher_id?.message}
-        </S.ErrorContainer>
+        <S.Label>
+          Priority
+          <Controller
+            control={control}
+            name="priority"
+            defaultValue={PriorityOptions[0]}
+            render={({ field: { onChange, value } }) => (
+              <Select
+                options={PriorityOptions}
+                value={value}
+                onChange={onChange}
+                menuShouldScrollIntoView
+                styles={{
+                  control: (baseStyles) => ({
+                    ...baseStyles,
+                    borderColor: "#7B68EE",
+                    boxShadow: "none",
+                    ":hover": {
+                      boxShadow: "none",
+                      borderColor: "#7B68EE",
+                    },
+                  }),
+                  container: (baseStyles) => ({
+                    ...baseStyles,
+                    width: "100%",
+                    fontSize: "1.3rem",
+                  }),
+                  indicatorSeparator: () => ({
+                    display: "none",
+                  }),
+                  dropdownIndicator: (baseStyles) => ({
+                    ...baseStyles,
+                    color: "#7B68EE",
+                    opacity: 1,
+                    ":hover": {
+                      color: "#7B68EE",
+                      opacity: 1,
+                    },
+                  }),
+                  menuList: (baseStyles) => ({
+                    ...baseStyles,
+                    padding: 0,
+                  }),
+                  menu: (baseStyles) => ({
+                    ...baseStyles,
+                    backgroundColor: "white",
+                  }),
+                  option: (baseStyles, { isFocused, isSelected }) => ({
+                    ...baseStyles,
+                    ":hover": {
+                      backgroundColor: "#7B68EE",
+                      color: "white",
+                    },
+                    backgroundColor:
+                      isFocused || isSelected ? "#7B68EE" : "white",
+                    color: isFocused || isSelected ? "white" : "black",
+                  }),
+                }}
+              />
+            )}
+          />
+        </S.Label>
+        <S.Label>
+          Subject
+          <Controller
+            control={control}
+            name="subject_id"
+            defaultValue={state[0]}
+            render={({ field: { onChange, value } }) => (
+              <Select
+                options={state}
+                value={value}
+                onChange={onChange}
+                components={{ Option: SubjectSelectItem }}
+                menuShouldScrollIntoView
+                isSearchable
+                menuPlacement="top"
+                styles={{
+                  control: (baseStyles) => ({
+                    ...baseStyles,
+                    borderColor: "#7B68EE",
+                    boxShadow: "none",
+                    ":hover": {
+                      boxShadow: "none",
+                      borderColor: "#7B68EE",
+                    },
+                  }),
+                  container: (baseStyles) => ({
+                    ...baseStyles,
+                    width: "100%",
+                    fontSize: "1.3rem",
+                  }),
+                  indicatorSeparator: () => ({
+                    display: "none",
+                  }),
+                  dropdownIndicator: (baseStyles) => ({
+                    ...baseStyles,
+                    color: "#7B68EE",
+                    opacity: 1,
+                    ":hover": {
+                      color: "#7B68EE",
+                      opacity: 1,
+                    },
+                  }),
+                  menuList: (baseStyles) => ({
+                    ...baseStyles,
+                    padding: 0,
+                  }),
+                  menu: (baseStyles) => ({
+                    ...baseStyles,
+                    backgroundColor: "white",
+                  }),
+                  option: (baseStyles, { isFocused, isSelected }) => ({
+                    ...baseStyles,
+                    ":hover": {
+                      backgroundColor: "#7B68EE",
+                      color: "white",
+                    },
+                    backgroundColor:
+                      isFocused || isSelected ? "#7B68EE" : "white",
+                    color: isFocused || isSelected ? "white" : "black",
+                  }),
+                }}
+              />
+            )}
+          />
+        </S.Label>
         <SubmitSubject type="submit" disabled={!isValid} value="Add" />
       </S.AddForm>
     </S.FormContainer>

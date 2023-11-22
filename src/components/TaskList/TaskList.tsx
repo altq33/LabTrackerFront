@@ -10,6 +10,7 @@ export const TaskList: React.FC<ListComponentProps<Task>> = ({ data }) => {
         <TaskListItem
           type={el.type}
           name={el.name}
+          key={el.id}
           priority={el.priority}
           id={el.id}
         />

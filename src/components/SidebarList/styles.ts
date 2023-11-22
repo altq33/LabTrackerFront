@@ -42,7 +42,7 @@ export const AddBtn = styled(NavLink)`
   border: 0;
   width: 16px;
   height: 16px;
-  background-image: url(${'"' + addIcon + '"'});
+  background-image: url(${addIcon});
   background-size: contain;
   background-repeat: no-repeat;
 `;

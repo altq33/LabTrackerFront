@@ -2,7 +2,7 @@
 import { AxiosError } from "axios";
 import { $api } from "http/index";
 import { Dispatch } from "redux";
-import { AugmentedTask, Task } from "types/api";
+import { AugmentedTask, Subject, Task } from "types/api";
 import { TaskAction, TaskActionsType } from "types/store";
 
 export const getAllTasks = () => {
@@ -32,7 +32,9 @@ export const getAllTasks = () => {
   };
 };
 
-export const addTask = (data: Omit<Task, "id" | "status">) => {
+export const addTask = (
+  data: Omit<Task, "id" | "status"> & { subject_id: Subject["id"] },
+) => {
   return async (dispatch: Dispatch<TaskAction>) => {
     try {
       dispatch({ type: TaskActionsType.FETCH_TASK });
