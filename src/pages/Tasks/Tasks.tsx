@@ -7,8 +7,8 @@ import { getAllTasks } from "store/actionCreators/tasks";
 import { AllTaskList } from "components/AllTaskList/AllTaskList";
 import { AddBtn } from "pages/Teachers/styles";
 import { createPortal } from "react-dom";
-import { SubjectsForm } from "components/SubjectsForm/SubjectsForm";
 import { useTypedSelector } from "hooks/useTypedSelector";
+import { TasksForm } from "components/TasksForm/TasksForm";
 
 export const Tasks = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -37,7 +37,7 @@ export const Tasks = () => {
       <AddBtn onClick={onAdd}>Add task</AddBtn>
       <AllTaskList data={state || []} />
       {createPortal(
-        <SubjectsForm onClose={onClose} isOpen={isOpen} />,
+        <TasksForm onClose={onClose} isOpen={isOpen} />,
         document.body,
       )}
     </S.TasksContainer>

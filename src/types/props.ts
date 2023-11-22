@@ -59,6 +59,11 @@ export interface SelectTeacherOptions {
   label: string;
 }
 
+export interface SelectSubjectOptions {
+  value: string | null;
+  label: string;
+}
+
 export interface FormSelectProps {
   onChange: (value: SelectTeacherOptions) => void;
   options: SelectTeacherOptions[];

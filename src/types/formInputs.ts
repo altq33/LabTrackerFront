@@ -1,4 +1,5 @@
-import { SelectTeacherOptions } from "./props";
+import { TaskPriority, TaskType } from "./api";
+import { SelectSubjectOptions, SelectTeacherOptions } from "./props";
 
 export interface RegFormInputs {
   username: string;
@@ -23,4 +24,13 @@ export interface SubjectFormInputs {
   name: string;
   course: number;
   teacher_id: SelectTeacherOptions;
+}
+
+export interface TaskFormInputs {
+  name: string;
+  deadline: Date;
+  description: string;
+  type: TaskType;
+  priority: TaskPriority;
+  subject_id: SelectSubjectOptions;
 }

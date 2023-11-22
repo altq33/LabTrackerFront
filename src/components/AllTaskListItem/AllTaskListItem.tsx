@@ -30,12 +30,8 @@ export const AllTaskListItem: React.FC<AllTaskListItemProps> = ({
   return (
     <NavigationLink to={`/workspace/tasks/${id}`}>
       <S.Container>
-        <S.TopContainer>
-          <S.Checkbox
-            role="checkbox"
-            $isChecked={status}
-            onClick={updateTaskStatus}
-          />
+        <S.TopContainer onClick={updateTaskStatus}>
+          <S.Checkbox role="checkbox" $isChecked={status} />
           <S.Name $isChecked={status}>{name}</S.Name>
         </S.TopContainer>
         <S.BottomContainer>

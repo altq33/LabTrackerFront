@@ -22,20 +22,22 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <S.LogoTitle>LabTracker</S.LogoTitle>
         </S.LogoContainer>
         <Navigation links={navLinksList} />
-        <SidebarList
-          title={"Subjects"}
-          data={state.subject.subjects}
-          render={(id, title, count) => (
-            <SubjectSidebarListItem
-              key={id}
-              id={id}
-              name={title}
-              count={count!}
-            />
-          )}
-          link="subjects?openForm=true"
-        />
-        {windowHeight > 900 && (
+        {windowHeight > 625 && (
+          <SidebarList
+            title={"Subjects"}
+            data={state.subject.subjects}
+            render={(id, title, count) => (
+              <SubjectSidebarListItem
+                key={id}
+                id={id}
+                name={title}
+                count={count!}
+              />
+            )}
+            link="subjects?openForm=true"
+          />
+        )}
+        {windowHeight > 800 && (
           <SidebarList
             title={"Tasks"}
             data={state.task.tasks.filter((task) => !task.status)}
