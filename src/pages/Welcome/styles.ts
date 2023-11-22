@@ -88,13 +88,13 @@ export const BackgroundLine = styled.span<BackgroundLineProps>`
   z-index: 1;
   display: block;
   position: absolute;
-  width: ${(props) => props.width};
-  border-bottom: 4px solid ${(props) => props.color};
-  transform: rotate(${(props) => props.rotation || "-45deg"});
-  top: ${(props) => props.top || "auto"};
-  left: ${(props) => props.left || "auto"};
-  right: ${(props) => props.right || "auto"};
-  bottom: ${(props) => props.bottom || "auto"};
+  width: ${(props) => props.$width};
+  border-bottom: 4px solid ${(props) => props.$color};
+  transform: rotate(${(props) => props.$rotation || "-45deg"});
+  top: ${(props) => props.$top || "auto"};
+  left: ${(props) => props.$left || "auto"};
+  right: ${(props) => props.$right || "auto"};
+  bottom: ${(props) => props.$bottom || "auto"};
 
   @media (max-width: 785px) {
     display: none;

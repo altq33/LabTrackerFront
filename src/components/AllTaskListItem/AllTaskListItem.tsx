@@ -31,13 +31,17 @@ export const AllTaskListItem: React.FC<AllTaskListItemProps> = ({
     <NavigationLink to={`/workspace/tasks/${id}`}>
       <S.Container>
         <S.TopContainer>
-          <S.Checkbox isChecked={status} onClick={updateTaskStatus} />
-          <S.Name isChecked={status}>{name}</S.Name>
+          <S.Checkbox
+            role="checkbox"
+            $isChecked={status}
+            onClick={updateTaskStatus}
+          />
+          <S.Name $isChecked={status}>{name}</S.Name>
         </S.TopContainer>
         <S.BottomContainer>
           <BadgeContainer>
-            {type && <Badge color={typeColor}>{type}</Badge>}
-            <Badge color={priorityColor}>{priority}</Badge>
+            {type && <Badge $color={typeColor}>{type}</Badge>}
+            <Badge $color={priorityColor}>{priority}</Badge>
           </BadgeContainer>
           {deadline && <S.Date>{normalizedDate}</S.Date>}
         </S.BottomContainer>

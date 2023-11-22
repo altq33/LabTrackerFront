@@ -28,7 +28,7 @@ export const Checkbox = styled.div<Checked>`
   cursor: pointer;
 
   ${(props) => {
-    if (props.isChecked) {
+    if (props.$isChecked) {
       return css`
         background-image: url(${trueCheckIcon});
       `;
@@ -40,13 +40,13 @@ export const Checkbox = styled.div<Checked>`
 `;
 
 export const Name = styled.h2<Checked>`
-  color: ${(props) => (props.isChecked ? "rgba(85, 119, 255, 0.8)" : "#000")};
+  color: ${(props) => (props.$isChecked ? "rgba(85, 119, 255, 0.8)" : "#000")};
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-decoration-line: ${(props) =>
-    props.isChecked ? "line-through" : "none"};
+    props.$isChecked ? "line-through" : "none"};
 `;
 
 export const BottomContainer = styled.div`

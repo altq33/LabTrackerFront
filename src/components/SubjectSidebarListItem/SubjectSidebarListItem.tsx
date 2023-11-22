@@ -9,7 +9,7 @@ export const SubjectSidebarListItem: React.FC<SubjectSidebarListItemProps> = ({
   return (
     <S.NavigationLink to={`subjects/${id}`} title={name}>
       <S.ListItem>
-        <S.Badge id={id} />
+        <S.Badge $id={id} />
         <S.Title>{name}</S.Title>
         <S.Count>{count}</S.Count>
       </S.ListItem>

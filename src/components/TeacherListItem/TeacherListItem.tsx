@@ -23,9 +23,9 @@ export const TeacherListItem: React.FC<Teacher> = ({
   };
 
   return (
-    <S.TeacherListItemContainer isOpen={isOpen}>
+    <S.TeacherListItemContainer $isOpen={isOpen}>
       <S.ClosedGroup onClick={() => setIsOpen((prev) => !prev)}>
-        <S.TeacherAvatar id={id}>{initials}</S.TeacherAvatar>
+        <S.TeacherAvatar $id={id}>{initials}</S.TeacherAvatar>
         <S.FullNameTitle title={name}>{name}</S.FullNameTitle>
         <S.FullNameTitle title={surname}>{surname}</S.FullNameTitle>
         <S.FullNameTitle title={father_name || "No data"}>
@@ -34,7 +34,7 @@ export const TeacherListItem: React.FC<Teacher> = ({
         <S.FullNameTitle title={phone_number || "No data"}>
           {phone_number || "No data"}
         </S.FullNameTitle>
-        <S.DropdownIcon isOpen={isOpen} src={dropdownIcon} />
+        <S.DropdownIcon $isOpen={isOpen} src={dropdownIcon} />
       </S.ClosedGroup>
       <S.UnderFullNameTitle title={name}>Name: {name}</S.UnderFullNameTitle>
       <S.UnderFullNameTitle title={surname}>
@@ -46,7 +46,7 @@ export const TeacherListItem: React.FC<Teacher> = ({
       <S.UnderFullNameTitle title={phone_number || "No data"}>
         Phone number: {phone_number || "No data"}
       </S.UnderFullNameTitle>
-      <S.DeleteBtn isOpen={isOpen} onClick={onDelete} />
+      <S.DeleteBtn $isOpen={isOpen} onClick={onDelete} />
     </S.TeacherListItemContainer>
   );
 };

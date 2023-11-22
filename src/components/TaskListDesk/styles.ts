@@ -43,5 +43,5 @@ export const ColumnIcon = styled.div<Colored>`
   border-radius: 3px;
   width: 12px;
   height: 12px;
-  background: ${(props) => props.color};
+  background: ${(props) => props.$color};
 `;

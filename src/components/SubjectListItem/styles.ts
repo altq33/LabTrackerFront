@@ -25,9 +25,9 @@ export const Cover = styled.div<IDProps>`
   height: 112px;
   flex-shrink: 0;
   border-radius: 6px;
-  ${({ id }) => {
+  ${({ $id }) => {
     const path = `'/src/assets/img/${
-      covers[id.charCodeAt(0) % covers.length]
+      covers[$id.charCodeAt(0) % covers.length]
     }'`;
     return css`
       background-image: url(${path});
@@ -64,8 +64,8 @@ export const TasksCount = styled.div<IDProps>`
   flex-shrink: 0;
   border-radius: 24px;
   color: white;
-  background-color: ${({ theme, id }) =>
-    Object.values(theme.brightColors)[id.charCodeAt(0) % 6]};
+  background-color: ${({ theme, $id }) =>
+    Object.values(theme.brightColors)[$id.charCodeAt(0) % 6]};
 `;
 
 export const TextContainer = styled.div`
@@ -108,8 +108,8 @@ export const AddedInfoContainer = styled.div`
 export const Badge = styled.div<Colored>`
   padding: 4px 10px;
   border-radius: 33px;
-  background-color: ${({ color }) => color + "5c"};
-  color: ${({ color }) => color};
+  background-color: ${({ $color }) => $color + "5c"};
+  color: ${({ $color }) => $color};
   font-size: 12px;
   font-weight: bold;
   display: flex;

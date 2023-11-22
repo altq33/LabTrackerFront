@@ -9,10 +9,10 @@ export const TaskSidebarListItem: React.FC<TaskSidebarListItemProps> = ({
   return (
     <NavigationLink to={`/workspace/tasks/${id}`}>
       <S.Container>
-        <S.Icon id={id}>
-          <S.Line size={5} />
-          <S.Line size={10} />
-          <S.Line size={10} />
+        <S.Icon $id={id}>
+          <S.Line $size={5} />
+          <S.Line $size={10} />
+          <S.Line $size={10} />
         </S.Icon>
         <S.Title>{name}</S.Title>
       </S.Container>

@@ -14,7 +14,7 @@ export const TaskListItem: React.FC<
       <S.Container>
         {type && (
           <S.BadgeContainer>
-            <Badge color={color}>{type}</Badge>
+            <Badge $color={color}>{type}</Badge>
           </S.BadgeContainer>
         )}
         <S.NameContainer>

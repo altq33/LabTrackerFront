@@ -7,10 +7,10 @@ export const Container = styled.div<SelectItemContainerProps>`
   gap: 10px;
   align-items: center;
   padding: 5px 0;
-  color: ${({ theme, isFocused, isSelected }) =>
-    isFocused || isSelected ? theme.dullColors.white : "black"};
-  background-color: ${({ theme, isFocused, isSelected }) =>
-    isFocused || isSelected ? theme.brightColors.purple : "white"};
+  color: ${({ theme, $isFocused, $isSelected }) =>
+    $isFocused || $isSelected ? theme.dullColors.white : "black"};
+  background-color: ${({ theme, $isFocused, $isSelected }) =>
+    $isFocused || $isSelected ? theme.brightColors.purple : "white"};
 `;
 
 export const Title = styled.h2`

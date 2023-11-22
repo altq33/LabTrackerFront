@@ -49,7 +49,7 @@ export const SubjectsForm: React.FC<TeachersFormProps> = ({
   };
 
   return (
-    <S.FormContainer isOpen={isOpen}>
+    <S.FormContainer $isOpen={isOpen}>
       <S.CloseBtn onClick={onClose} />
       <S.AddForm onSubmit={handleSubmit(onSubmit)}>
         <S.FormTitle>Subject</S.FormTitle>

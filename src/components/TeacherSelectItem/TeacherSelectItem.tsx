@@ -24,12 +24,12 @@ export const TeacherSelectItem: React.FC<OptionProps<SelectTeacherOptions>> = ({
 
   return (
     <S.Container
-      isFocused={isFocused}
-      isSelected={isSelected}
+      $isFocused={isFocused}
+      $isSelected={isSelected}
       ref={innerRef}
       {...innerProps}
     >
-      <TeacherAvatar id={data.value ?? "N"}>{initials}</TeacherAvatar>
+      <TeacherAvatar $id={data.value ?? "N"}>{initials}</TeacherAvatar>
       {currentTeacher ? (
         <S.Title>
           {`${currentTeacher.surname} ${currentTeacher.name[0]}.`}

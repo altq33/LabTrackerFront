@@ -14,7 +14,7 @@ export const PathTrack: React.FC<PathTrackProps> = ({
 }) => (
   <S.Container>
     <S.TopName>
-      <S.TopColorIndicator id={mainId}></S.TopColorIndicator>
+      <S.TopColorIndicator $id={mainId}></S.TopColorIndicator>
       <S.TopTitle>{mainTitle}</S.TopTitle>
     </S.TopName>
     <S.BottomContainer>
@@ -26,7 +26,7 @@ export const PathTrack: React.FC<PathTrackProps> = ({
         </S.EntityContainer>
         <img src={arrowIcon} />
         <S.EntityContainer>
-          <S.ColorEntityIndicator id={secondaryId}>
+          <S.ColorEntityIndicator $id={secondaryId}>
             <S.InnerIndicator />
           </S.ColorEntityIndicator>
           <S.EntityName>{secondaryTitle}</S.EntityName>

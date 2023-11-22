@@ -20,7 +20,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
   return (
     <div>
-      <S.SidebarContainer isOpen={isOpen}>
+      <S.SidebarContainer $isOpen={isOpen}>
         <S.LogoContainer onClick={onClose}>
           <S.LogoIcon src={logoIcon} alt="Pretty logo for you" />
           <S.LogoTitle>LabTracker</S.LogoTitle>

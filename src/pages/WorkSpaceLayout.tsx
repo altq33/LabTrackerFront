@@ -9,10 +9,10 @@ import logoIcon from "assets/icons/logo.svg";
 const WorkSpaceWrapper = styled.div<Opened>`
   width: 100%;
   height: 100%;
-  padding-left: ${({ isOpen }) => (isOpen ? "257px" : 0)};
+  padding-left: ${({ $isOpen }) => ($isOpen ? "257px" : 0)};
   transition: 0.7s padding-left ease;
   @media screen and (max-width: 624px) {
-    padding-left: ${({ isOpen }) => (isOpen ? "90px" : 0)};
+    padding-left: ${({ $isOpen }) => ($isOpen ? "90px" : 0)};
   }
 `;
 
@@ -29,7 +29,7 @@ const OpenBtn = styled.button<Opened>`
   cursor: pointer;
   position: fixed;
   bottom: 20px;
-  left: ${({ isOpen }) => (isOpen ? 0 : "-100%")};
+  left: ${({ $isOpen }) => ($isOpen ? 0 : "-100%")};
   transition: 1s left ease;
   z-index: 2;
   border: 2px solid ${({ theme }) => theme.dullColors.border};
@@ -40,8 +40,8 @@ export const WorkSpaceLayout = () => {
 
   return (
     <PrivateRoute>
-      <WorkSpaceWrapper isOpen={isOpen}>
-        <OpenBtn isOpen={!isOpen} onClick={() => setIsOpen(true)} />
+      <WorkSpaceWrapper $isOpen={isOpen}>
+        <OpenBtn $isOpen={!isOpen} onClick={() => setIsOpen(true)} />
         <Sidebar
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}

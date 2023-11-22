@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { IDProps, TopColorIndicatorProps } from "types/styledComponentsProps";
+import { IDProps } from "types/styledComponentsProps";
 
 export const Container = styled.div`
   display: flex;
@@ -12,12 +12,12 @@ export const TopName = styled.div`
   gap: 8px;
 `;
 
-export const TopColorIndicator = styled.div<TopColorIndicatorProps>`
+export const TopColorIndicator = styled.div<IDProps>`
   width: 21px;
   height: 21px;
   border-radius: 6px;
-  background: ${({ theme, id }) =>
-    Object.values(theme.brightColors)[id.charCodeAt(0) % 6]};
+  background: ${({ theme, $id }) =>
+    Object.values(theme.brightColors)[$id.charCodeAt(0) % 6]};
 `;
 
 export const TopTitle = styled.h2`
@@ -61,8 +61,8 @@ export const ColorEntityIndicator = styled.div<IDProps>`
   align-items: center;
   border-radius: 5px;
   justify-content: center;
-  background: ${({ theme, id }) =>
-    Object.values(theme.brightColors)[id.charCodeAt(0) % 6]};
+  background: ${({ theme, $id }) =>
+    Object.values(theme.brightColors)[$id.charCodeAt(0) % 6]};
 `;
 
 export const InnerIndicator = styled.div`

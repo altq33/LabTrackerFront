@@ -29,42 +29,47 @@ export const Welcome = () => {
   ) : (
     <S.FullscreenStack>
       <S.FullscreenContainer>
-        <S.BackgroundLine color="#ec31cd" width="150px" top="70px" left="0" />
         <S.BackgroundLine
-          color="#D0D0FF"
-          width="177px"
-          top="170px"
-          left="50px"
+          $color="#ec31cd"
+          $width="150px"
+          $top="70px"
+          $left="0"
         />
         <S.BackgroundLine
-          color="#ec31cd"
-          width="97px"
-          top="400px"
-          left="250px"
+          $color="#D0D0FF"
+          $width="177px"
+          $top="170px"
+          $left="50px"
         />
         <S.BackgroundLine
-          color="#D0D0FF"
-          width="177px"
-          right="100px"
-          top="100px"
+          $color="#ec31cd"
+          $width="97px"
+          $top="400px"
+          $left="250px"
         />
         <S.BackgroundLine
-          color="#ec31cd"
-          width="177px"
-          right="150px"
-          top="400px"
+          $color="#D0D0FF"
+          $width="177px"
+          $right="100px"
+          $top="100px"
         />
         <S.BackgroundLine
-          color="#D0D0FF"
-          width="58px"
-          right="400px"
-          bottom="120px"
+          $color="#ec31cd"
+          $width="177px"
+          $right="150px"
+          $top="400px"
         />
         <S.BackgroundLine
-          color="#ec31cd"
-          width="103px"
-          bottom="100px"
-          left="55px"
+          $color="#D0D0FF"
+          $width="58px"
+          $right="400px"
+          $bottom="120px"
+        />
+        <S.BackgroundLine
+          $color="#ec31cd"
+          $width="103px"
+          $bottom="100px"
+          $left="55px"
         />
 
         <S.FlexContainer>

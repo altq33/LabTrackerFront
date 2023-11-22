@@ -12,7 +12,7 @@ export const FormContainer = styled.div<Opened>`
   left: 50%;
   transition: 1s all ease;
   transform: translate(-50%, 50%);
-  bottom: ${(props) => (props.isOpen ? "50%" : "-100%")};
+  bottom: ${(props) => (props.$isOpen ? "50%" : "-100%")};
   width: 50%;
   height: 80vh;
   background-color: ${({ theme }) => theme.dullColors.sectionsBg};
@@ -29,7 +29,7 @@ export const CloseBtn = styled.button`
   width: 30px;
   height: 30px;
   background: transparent;
-  background-image: url(${'"' + closeIcon + '"'});
+  background-image: url(${closeIcon});
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;

@@ -57,7 +57,7 @@ export const SubjectPage = () => {
         <S.DeleteBtn onClick={onDelete} />
       </S.TopSideContainer>
 
-      <S.FullCover id={subject.id}>
+      <S.FullCover $id={subject.id}>
         <S.InfoContainer>
           <S.Title>{subject.name}</S.Title>
           <S.StatContainer>

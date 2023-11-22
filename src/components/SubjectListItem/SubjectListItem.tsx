@@ -10,10 +10,10 @@ export const SubjectListItem: React.FC<Subject> = ({
 }) => {
   return (
     <S.SubjectListItemContainer to={`/workspace/subjects/${id}`}>
-      <S.Cover id={id} />
+      <S.Cover $id={id} />
       <S.Container>
         <S.InfoContainer>
-          <S.TasksCount id={id}>{tasks_count ?? 0}</S.TasksCount>
+          <S.TasksCount $id={id}>{tasks_count ?? 0}</S.TasksCount>
           <S.TextContainer>
             <S.Name>{name}</S.Name>
             <S.TeacherName>
@@ -24,7 +24,7 @@ export const SubjectListItem: React.FC<Subject> = ({
           </S.TextContainer>
         </S.InfoContainer>
         <S.AddedInfoContainer>
-          <S.Badge color="#FD71AF">Course: {course}</S.Badge>
+          <S.Badge $color="#FD71AF">Course: {course}</S.Badge>
         </S.AddedInfoContainer>
       </S.Container>
     </S.SubjectListItemContainer>

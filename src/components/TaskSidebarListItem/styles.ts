@@ -10,7 +10,7 @@ export const Container = styled.div`
 
 export const Line = styled.span<Sized>`
   height: 2px;
-  width: ${(props) => props.size}px;
+  width: ${(props) => props.$size}px;
 `;
 
 export const Icon = styled.div<IDProps>`
@@ -23,11 +23,11 @@ export const Icon = styled.div<IDProps>`
   justify-content: center;
   flex-shrink: 0;
   border-radius: 8px;
-  background-color: ${({ id, theme }) =>
-    Object.values(theme.brightColors)[id.charCodeAt(0) % 6] + "5c"};
+  background-color: ${({ $id, theme }) =>
+    Object.values(theme.brightColors)[$id.charCodeAt(0) % 6] + "5c"};
   ${Line} {
-    background-color: ${({ id, theme }) =>
-      Object.values(theme.brightColors)[id.charCodeAt(0) % 6]};
+    background-color: ${({ $id, theme }) =>
+      Object.values(theme.brightColors)[$id.charCodeAt(0) % 6]};
   }
 `;
 

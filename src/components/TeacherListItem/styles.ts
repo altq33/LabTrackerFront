@@ -6,7 +6,7 @@ export const TeacherListItemContainer = styled.li<Opened>`
   position: relative;
   background-color: ${({ theme }) => theme.dullColors.sectionsBg};
   height: 58px;
-  min-height: ${({ isOpen }) => (isOpen ? "300px" : "58px")};
+  min-height: ${({ $isOpen }) => ($isOpen ? "300px" : "58px")};
   width: 100%;
   transition: all ease 0.5s;
   padding: 8px;
@@ -37,8 +37,8 @@ export const TeacherAvatar = styled.div<IDProps>`
   flex-shrink: 0;
   border-radius: 10px;
   // Красим аватарочку в зависимости от чаркода айдишника
-  background-color: ${({ theme, id }) =>
-    Object.values(theme.brightColors)[id.charCodeAt(0) % 6]};
+  background-color: ${({ theme, $id }) =>
+    Object.values(theme.brightColors)[$id.charCodeAt(0) % 6]};
   display: flex;
   color: white;
   font-size: 20px;
@@ -52,7 +52,7 @@ export const TeacherAvatar = styled.div<IDProps>`
 export const DropdownIcon = styled.img<Opened>`
   width: 30px;
   height: 30px;
-  transform: rotate(${({ isOpen }) => (isOpen ? "180deg" : "0")});
+  transform: rotate(${({ $isOpen }) => ($isOpen ? "180deg" : "0")});
 `;
 
 export const FullNameTitle = styled.h2`
@@ -94,7 +94,7 @@ export const UnderFullNameTitle = styled.h2`
 export const DeleteBtn = styled.button<Opened>`
   width: 30px;
   height: 30px;
-  display: ${(props) => (props.isOpen ? "block" : "none")};
+  display: ${(props) => (props.$isOpen ? "block" : "none")};
   position: absolute;
   right: 20px;
   bottom: 20px;

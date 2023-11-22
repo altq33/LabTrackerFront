@@ -1,7 +1,7 @@
 import { Cover } from "components/SubjectListItem/styles";
 import { SubjectsContainer } from "pages/Subjects/styles";
 import { coversBig } from "resources/resources";
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import deleteIcon from "assets/icons/delete-svgrepo-com.svg";
 
 export const Container = styled(SubjectsContainer)`
@@ -37,10 +37,14 @@ export const FullCover = styled(Cover)`
   padding: 121px 35px 32px 32px;
   background-size: cover;
   background-position: center;
-  background-image: url(${({ id }) =>
-    '"/src/assets/img/' +
-    coversBig[id.charCodeAt(0) % coversBig.length] +
-    '"'});
+  ${({ $id }) => {
+    const path = `/src/assets/img/${
+      coversBig[$id.charCodeAt(0) % coversBig.length]
+    }`;
+    return css`
+      background-image: url(${path});
+    `;
+  }}
 
   @media (max-width: 720px) {
     padding-top: 35px;

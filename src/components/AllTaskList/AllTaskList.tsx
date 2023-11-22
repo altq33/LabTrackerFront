@@ -9,7 +9,7 @@ export const AllTaskList: React.FC<ListComponentProps<AugmentedTask>> = ({
   return (
     <S.List>
       {data.map((el) => (
-        <AllTaskListItem {...el} />
+        <AllTaskListItem key={el.id} {...el} />
       ))}
     </S.List>
   );

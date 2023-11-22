@@ -1,43 +1,39 @@
 export interface NavigationLinkProps {
-  selectedMarker: string;
-  notSelectedMarker: string;
+  $selectedMarker: string;
+  $notSelectedMarker: string;
 }
 
 export interface BackgroundLineProps {
-  top?: string;
-  left?: string;
-  right?: string;
-  bottom?: string;
-  width: string;
-  rotation?: string;
-  color: string;
+  $top?: string;
+  $left?: string;
+  $right?: string;
+  $bottom?: string;
+  $width: string;
+  $rotation?: string;
+  $color: string;
 }
 
 export interface IDProps {
-  id: string;
+  $id: string;
 }
 
 export interface SelectItemContainerProps {
-  isFocused: boolean;
-  isSelected: boolean;
-}
-
-export interface TopColorIndicatorProps {
-  id: string;
+  $isFocused: boolean;
+  $isSelected: boolean;
 }
 
 export interface Colored {
-  color: string;
+  $color: string;
 }
 
 export interface Opened {
-  isOpen: boolean;
+  $isOpen: boolean;
 }
 
 export interface Checked {
-  isChecked: boolean;
+  $isChecked: boolean;
 }
 
 export interface Sized {
-  size: number;
+  $size: number;
 }
