@@ -1,8 +1,5 @@
 import { styled } from "styled-components";
-import {
-  ColorEntityIndicatorProps,
-  TopColorIndicatorProps,
-} from "types/styledComponentsProps";
+import { IDProps, TopColorIndicatorProps } from "types/styledComponentsProps";
 
 export const Container = styled.div`
   display: flex;
@@ -57,7 +54,7 @@ export const Icon = styled.img`
   height: 16px;
 `;
 
-export const ColorEntityIndicator = styled.div<ColorEntityIndicatorProps>`
+export const ColorEntityIndicator = styled.div<IDProps>`
   width: 16px;
   height: 16px;
   display: flex;

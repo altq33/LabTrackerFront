@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled, css } from "styled-components";
 import { Checked } from "types/styledComponentsProps";
 import trueCheckIcon from "assets/icons/truecheck.svg";
 import falseCheckIcon from "assets/icons/falsecheck.svg";
@@ -26,8 +26,17 @@ export const Checkbox = styled.div<Checked>`
   width: 19px;
   height: 19px;
   cursor: pointer;
-  background-image: url(${(props) =>
-    "'" + (props.isChecked ? trueCheckIcon : falseCheckIcon) + "'"});
+
+  ${(props) => {
+    if (props.isChecked) {
+      return css`
+        background-image: url(${trueCheckIcon});
+      `;
+    }
+    return css`
+      background-image: url(${falseCheckIcon});
+    `;
+  }};
 `;
 
 export const Name = styled.h2<Checked>`

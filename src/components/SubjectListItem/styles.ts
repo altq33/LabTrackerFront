@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { NavLink } from "react-router-dom";
 import { covers } from "./../../resources/resources";
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 import { Colored, IDProps } from "types/styledComponentsProps";
 
 export const SubjectListItemContainer = styled(NavLink)`
@@ -25,8 +25,14 @@ export const Cover = styled.div<IDProps>`
   height: 112px;
   flex-shrink: 0;
   border-radius: 6px;
-  background-image: url(${({ id }) =>
-    '"/src/assets/img/' + covers[id.charCodeAt(0) % covers.length] + '"'});
+  ${({ id }) => {
+    const path = `'/src/assets/img/${
+      covers[id.charCodeAt(0) % covers.length]
+    }'`;
+    return css`
+      background-image: url(${path});
+    `;
+  }}
   background-size: contain;
   background-repeat: no-repeat;
   @media screen and (max-width: 420px) {

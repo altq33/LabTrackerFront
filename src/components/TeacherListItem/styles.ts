@@ -98,7 +98,7 @@ export const DeleteBtn = styled.button<Opened>`
   position: absolute;
   right: 20px;
   bottom: 20px;
-  background-image: url(${"'" + deleteIcon + "'"});
+  background-image: url(${deleteIcon});
   background-size: contain;
   border: 0;
   background-color: transparent;

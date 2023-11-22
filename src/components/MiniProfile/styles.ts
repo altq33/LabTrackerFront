@@ -58,7 +58,7 @@ export const SettingsIcon = styled.div`
   display: block;
   width: 22px;
   height: 22px;
-  background-image: url(${'"' + settingIcon + '"'});
+  background-image: url(${settingIcon});
   @media screen and (max-width: 624px) {
     display: none;
   }
