@@ -1,10 +1,9 @@
+import { useTypedSelector } from "hooks/useTypedSelector";
 import * as S from "./styles";
 import { TeacherAvatar } from "components/TeacherListItem/styles";
-import { useSelector } from "react-redux";
 // eslint-disable-next-line import/named
 import { OptionProps } from "react-select";
 import { SelectTeacherOptions } from "types/props";
-import { TeacherState } from "types/store";
 
 export const TeacherSelectItem: React.FC<OptionProps<SelectTeacherOptions>> = ({
   innerRef,
@@ -13,9 +12,7 @@ export const TeacherSelectItem: React.FC<OptionProps<SelectTeacherOptions>> = ({
   isFocused,
   isSelected,
 }) => {
-  const state = useSelector(
-    (state: { teacher: TeacherState }) => state.teacher.teachers,
-  );
+  const state = useTypedSelector((state) => state.teacher.teachers);
 
   const currentTeacher = state.find((el) => el.id == data.value);
   const initials = currentTeacher

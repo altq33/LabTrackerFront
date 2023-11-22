@@ -3,19 +3,15 @@ import logoIcon from "assets/icons/logo.svg";
 import { Navigation } from "../Navigation";
 import { navLinksList } from "resources/resources";
 import { MiniProfile } from "components/MiniProfile/MiniProfile";
-import { useSelector } from "react-redux";
-import { SubjectState, TaskState, UserState } from "types/store";
 import { SidebarProps } from "types/props";
 import { SidebarList } from "components/SidebarList/SidebarList";
 import { SubjectSidebarListItem } from "components/SubjectSidebarListItem/SubjectSidebarListItem";
 import useWindowHeight from "hooks/useWindowHeight";
 import { TaskSidebarListItem } from "components/TaskSidebarListItem/TaskSidebarListItem";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
-  const state = useSelector(
-    (state: { user: UserState; subject: SubjectState; task: TaskState }) =>
-      state,
-  );
+  const state = useTypedSelector((state) => state);
   const windowHeight = useWindowHeight();
 
   return (

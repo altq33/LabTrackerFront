@@ -21,6 +21,7 @@ export const SidebarContainer = styled.div<Opened>`
     padding-top: 30px;
     padding-left: 5px;
     padding-right: 5px;
+    padding-bottom: 30px;
   }
 `;
 

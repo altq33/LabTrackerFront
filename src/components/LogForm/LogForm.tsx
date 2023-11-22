@@ -2,13 +2,14 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { LogFormInputs } from "types/formInputs";
 import * as S from "components/RegForm/styles";
 import { login } from "store/actionCreators/user";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, UserState } from "types/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "types/store";
 import { Navigate } from "react-router-dom";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
 export const LogForm = () => {
   const dispatch: AppDispatch = useDispatch();
-  const selector = useSelector((state: { user: UserState }) => state.user);
+  const selector = useTypedSelector((state) => state.user);
   const {
     register,
     handleSubmit,

@@ -6,13 +6,12 @@ import { MouseEvent, useRef } from "react";
 import * as S from "./styles";
 import { About } from "components/About";
 import { AuthForms } from "components/AuthForms/AuthForms";
-import { useSelector } from "react-redux";
-import { UserState } from "types/store";
 import { Navigate } from "react-router-dom";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
 export const Welcome = () => {
   const secondBlock = useRef<HTMLDivElement | null>(null);
-  const state = useSelector((state: { user: UserState }) => state.user);
+  const state = useTypedSelector((state) => state.user);
 
   const scrollNext = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();

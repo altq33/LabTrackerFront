@@ -1,13 +1,14 @@
-import { SelectTeacherOptions, TeachersFormProps } from "types/props";
+import { TeachersFormProps } from "types/props";
 import * as S from "components/TeachersForm/styles";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { SubjectFormInputs } from "types/formInputs";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, TeacherState } from "types/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "types/store";
 import { NumberPicker } from "components/NumberPicker/NumberPicker";
 import { AddInputSubject, SubmitSubject } from "./styles";
 import { FormSelect } from "components/FormSelect/FormSelect";
 import { addSubject } from "store/actionCreators/subjects";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
 export const SubjectsForm: React.FC<TeachersFormProps> = ({
   isOpen,
@@ -25,18 +26,16 @@ export const SubjectsForm: React.FC<TeachersFormProps> = ({
     },
   });
   const dispatch: AppDispatch = useDispatch();
-  const state: SelectTeacherOptions[] = useSelector(
-    (state: { teacher: TeacherState }) => {
-      const options = [{ value: null, label: "None" }];
-      return [
-        ...options,
-        ...state.teacher.teachers.map((el) => ({
-          value: el.id,
-          label: `${el.surname} ${el.name}`,
-        })),
-      ];
-    },
-  );
+  const state = useTypedSelector((state) => {
+    const options = [{ value: null, label: "None" }];
+    return [
+      ...options,
+      ...state.teacher.teachers.map((el) => ({
+        value: el.id,
+        label: `${el.surname} ${el.name}`,
+      })),
+    ];
+  });
 
   const onSubmit: SubmitHandler<SubjectFormInputs> = (data) => {
     dispatch(

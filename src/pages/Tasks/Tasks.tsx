@@ -1,17 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as S from "./styles";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { AppDispatch, TaskState } from "types/store";
+import { AppDispatch } from "types/store";
 import { getAllTasks } from "store/actionCreators/tasks";
 import { AllTaskList } from "components/AllTaskList/AllTaskList";
 import { AddBtn } from "pages/Teachers/styles";
 import { createPortal } from "react-dom";
 import { SubjectsForm } from "components/SubjectsForm/SubjectsForm";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
 export const Tasks = () => {
   const dispatch: AppDispatch = useDispatch();
-  const state = useSelector((state: { task: TaskState }) => state.task.tasks);
+  const state = useTypedSelector((state) => state.task.tasks);
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 

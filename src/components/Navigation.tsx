@@ -1,9 +1,7 @@
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 import { NavigationProps } from "types/props";
-import { TaskState, TeacherState } from "types/store";
-import { SubjectState } from "../types/store";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
 const LinkList = styled.ul`
   width: 217px;
@@ -56,13 +54,7 @@ const LinkListItem = styled.li`
 `;
 
 export const Navigation: React.FC<NavigationProps> = ({ links }) => {
-  const state = useSelector(
-    (state: {
-      teacher: TeacherState;
-      subject: SubjectState;
-      task: TaskState;
-    }) => state,
-  );
+  const state = useTypedSelector((state) => state);
 
   const getCount = (text: string): number => {
     switch (text) {

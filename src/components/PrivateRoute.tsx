@@ -1,12 +1,13 @@
+import { useTypedSelector } from "hooks/useTypedSelector";
 import React, { useLayoutEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Navigate } from "react-router-dom";
 import { refresh } from "store/actionCreators/user";
-import { AppDispatch, UserState } from "types/store";
+import { AppDispatch } from "types/store";
 
 export const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
-  const state = useSelector((state: { user: UserState }) => state.user);
+  const state = useTypedSelector((state) => state.user);
   const dispatch: AppDispatch = useDispatch();
 
   useLayoutEffect(() => {

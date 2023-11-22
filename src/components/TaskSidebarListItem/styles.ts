@@ -1,11 +1,21 @@
+import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 import { IDProps, Sized } from "types/styledComponentsProps";
+
+export const NavigationLink = styled(NavLink)`
+  display: flex;
+  width: 100%;
+`;
 
 export const Container = styled.div`
   display: flex;
   width: 197px;
   align-items: center;
   gap: 8px;
+  @media screen and (max-width: 624px) {
+    justify-content: center;
+    align-items: flex-start;
+  }
 `;
 
 export const Line = styled.span<Sized>`
@@ -37,4 +47,7 @@ export const Title = styled.h2`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  @media screen and (max-width: 624px) {
+    display: none;
+  }
 `;

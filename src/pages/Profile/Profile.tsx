@@ -1,11 +1,12 @@
 import * as S from "./styles";
 import avatar from "assets/img/avatar.png";
 import usernameIcon from "assets/icons/@.svg";
-import { useSelector, useDispatch } from "react-redux";
-import { UserActionsType, UserState } from "types/store";
+import { useDispatch } from "react-redux";
+import { UserActionsType } from "types/store";
+import { useTypedSelector } from "hooks/useTypedSelector";
 
 export const Profile = () => {
-  const state = useSelector((state: { user: UserState }) => state.user);
+  const state = useTypedSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const logout = () => dispatch({ type: UserActionsType.LOGOUT });

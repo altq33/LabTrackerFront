@@ -5,7 +5,7 @@ import falseCheckIcon from "assets/icons/falsecheck.svg";
 
 export const Container = styled.div`
   display: flex;
-  width: 306px;
+  max-width: 306px;
   padding: 12px 10px;
   flex-direction: column;
   align-items: flex-start;
@@ -26,7 +26,7 @@ export const Checkbox = styled.div<Checked>`
   width: 19px;
   height: 19px;
   cursor: pointer;
-
+  flex-shrink: 0;
   ${(props) => {
     if (props.$isChecked) {
       return css`
@@ -45,6 +45,9 @@ export const Name = styled.h2<Checked>`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
   text-decoration-line: ${(props) =>
     props.$isChecked ? "line-through" : "none"};
 `;

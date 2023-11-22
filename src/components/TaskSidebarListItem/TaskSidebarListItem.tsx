@@ -1,13 +1,12 @@
 import { TaskSidebarListItemProps } from "types/props";
 import * as S from "./styles";
-import { NavigationLink } from "components/TaskListItem/styles";
 
 export const TaskSidebarListItem: React.FC<TaskSidebarListItemProps> = ({
   name,
   id,
 }) => {
   return (
-    <NavigationLink to={`/workspace/tasks/${id}`}>
+    <S.NavigationLink to={`/workspace/tasks/${id}`}>
       <S.Container>
         <S.Icon $id={id}>
           <S.Line $size={5} />
@@ -16,6 +15,6 @@ export const TaskSidebarListItem: React.FC<TaskSidebarListItemProps> = ({
         </S.Icon>
         <S.Title>{name}</S.Title>
       </S.Container>
-    </NavigationLink>
+    </S.NavigationLink>
   );
 };
