@@ -17,6 +17,7 @@ export const Tasks = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
+    document.title = "Tasks";
     dispatch(getAllTasks());
     if (searchParams.get("openForm")) {
       setIsOpen(true);

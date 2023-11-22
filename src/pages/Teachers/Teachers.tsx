@@ -14,6 +14,7 @@ export const Teachers = () => {
   const state = useTypedSelector((state) => state.teacher.teachers);
 
   useLayoutEffect(() => {
+    document.title = "Teachers";
     dispatch(getAllTeachers());
   }, [dispatch]);
 

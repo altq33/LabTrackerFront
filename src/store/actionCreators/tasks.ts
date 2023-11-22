@@ -3,7 +3,12 @@ import { AxiosError } from "axios";
 import { $api } from "http/index";
 import { Dispatch } from "redux";
 import { AugmentedTask, Subject, Task } from "types/api";
-import { TaskAction, TaskActionsType } from "types/store";
+import {
+  SubjectAction,
+  SubjectActionsType,
+  TaskAction,
+  TaskActionsType,
+} from "types/store";
 
 export const getAllTasks = () => {
   return async (dispatch: Dispatch<TaskAction>) => {
@@ -35,13 +40,17 @@ export const getAllTasks = () => {
 export const addTask = (
   data: Omit<Task, "id" | "status"> & { subject_id: Subject["id"] },
 ) => {
-  return async (dispatch: Dispatch<TaskAction>) => {
+  return async (dispatch: Dispatch<TaskAction | SubjectAction>) => {
     try {
       dispatch({ type: TaskActionsType.FETCH_TASK });
       const response = await $api.post<AugmentedTask>(`/tasks`, data);
       dispatch({
         type: TaskActionsType.ADD_TASK,
         payload: response.data,
+      });
+      dispatch({
+        type: SubjectActionsType.UPDATE_TASK_COUNT,
+        payload: response.data.subject.id,
       });
     } catch (e: unknown) {
       dispatch({

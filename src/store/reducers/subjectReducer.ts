@@ -25,6 +25,15 @@ export const subjectReducer = (
           (subject) => subject.id !== action.payload,
         ),
       };
+    case SubjectActionsType.UPDATE_TASK_COUNT:
+      return {
+        ...state,
+        subjects: state.subjects.map((subject) =>
+          subject.id == action.payload
+            ? { ...subject, tasks_count: (subject.tasks_count ?? 0) + 1 }
+            : subject,
+        ),
+      };
     case SubjectActionsType.GET_ALL_SUBJECTS:
       return { error: null, loading: false, subjects: action.payload };
     case SubjectActionsType.RESET:

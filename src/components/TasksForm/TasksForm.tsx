@@ -46,7 +46,7 @@ export const TasksForm: React.FC<TeachersFormProps> = ({ isOpen, onClose }) => {
     dispatch(
       addTask({
         ...data,
-        deadline: data.deadline.toISOString(),
+        deadline: data.deadline ? data.deadline.toISOString() : null,
         type: data.type.value,
         priority: data.priority.value,
         subject_id: data.subject_id.value,

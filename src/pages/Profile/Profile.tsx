@@ -4,10 +4,15 @@ import usernameIcon from "assets/icons/@.svg";
 import { useDispatch } from "react-redux";
 import { UserActionsType } from "types/store";
 import { useTypedSelector } from "hooks/useTypedSelector";
+import { useEffect } from "react";
 
 export const Profile = () => {
   const state = useTypedSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    document.title = "Profile / " + state.user?.username;
+  }, [state]);
 
   const logout = () => dispatch({ type: UserActionsType.LOGOUT });
 

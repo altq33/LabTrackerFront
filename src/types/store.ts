@@ -51,6 +51,7 @@ export enum SubjectActionsType {
   ADD_SUBJECT = "ADD_SUBJECT",
   DELETE_SUBJECT = "DELETE_SUBJECT",
   GET_ALL_SUBJECTS = "GET_ALL_SUBJECTS",
+  UPDATE_TASK_COUNT = "UPDATE_TASK_COUNT",
   RESET = "RESET",
 }
 
@@ -139,6 +140,11 @@ export interface SubjectAddAction {
   payload: Subject;
 }
 
+export interface SubjectUpdateTaskCountAction {
+  type: SubjectActionsType.UPDATE_TASK_COUNT;
+  payload: Subject["id"];
+}
+
 export interface SubjectsGetAllAction {
   type: SubjectActionsType.GET_ALL_SUBJECTS;
   payload: Subject[];
@@ -174,7 +180,8 @@ export type SubjectAction =
   | SubjectErrorAction
   | SubjectFetchAction
   | SubjectsGetAllAction
-  | SubjectReset;
+  | SubjectReset
+  | SubjectUpdateTaskCountAction;
 
 export type TaskAction =
   | TaskAddAction

@@ -21,6 +21,7 @@ export const Subjects = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    document.title = "Subjects";
     if (searchParams.get("openForm")) {
       setIsOpen(true);
     }
