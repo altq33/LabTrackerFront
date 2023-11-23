@@ -23,7 +23,6 @@ export const SubjectPage = () => {
       .get<Subject>(`/subjects/${params.id}`)
       .then((res) => {
         setSubject(res.data);
-        setIsLoading(false);
       })
       .finally(() => {
         setIsLoading(false);
@@ -54,7 +53,9 @@ export const SubjectPage = () => {
           category={"Subjects"}
           icon={subjectIcon}
         />
-        <S.DeleteBtn onClick={onDelete} />
+        <S.ButtonsContainer>
+          <S.DeleteBtn onClick={onDelete} />
+        </S.ButtonsContainer>
       </S.TopSideContainer>
 
       <S.FullCover $id={subject.id}>

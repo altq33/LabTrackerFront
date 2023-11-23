@@ -17,12 +17,17 @@ export const TopSideContainer = styled.div`
   width: 100%;
 `;
 
+export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
 export const DeleteBtn = styled.button`
   width: 20px;
   height: 20px;
   border: 0;
   background: transparent;
-  background-image: url(${'"' + deleteIcon + '"'});
+  background-image: url(${deleteIcon});
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -31,8 +36,9 @@ export const DeleteBtn = styled.button`
 
 export const FullCover = styled(Cover)`
   width: 100%;
-  height: 196px;
+  min-height: 196px;
   border-radius: 14px;
+  overflow: hidden;
   color: white;
   display: flex;
   padding: 121px 35px 32px 32px;
@@ -47,18 +53,16 @@ export const FullCover = styled(Cover)`
     `;
   }}
 
-  @media (max-width: 720px) {
-    padding-top: 35px;
-  }
+  padding-top: 35px;
+  height: auto;
 `;
 
 export const InfoContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  @media (max-width: 720px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
+  gap: 20px;
 `;
 
 export const Title = styled.h2`
@@ -66,6 +70,12 @@ export const Title = styled.h2`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`;
+
+export const Stats = styled.div`
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 `;
 
 export const StatContainer = styled.div`
@@ -92,4 +102,10 @@ export const StatValue = styled.h3`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  @media (max-width: 420px) {
+    font-size: 16px;
+  }
+  @media (max-width: 350px) {
+    font-size: 12px;
+  }
 `;

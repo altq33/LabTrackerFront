@@ -38,7 +38,7 @@ export const LogoutBtn = styled.button`
   border: 0;
   cursor: pointer;
   background: transparent;
-  background-image: ${"url('" + logoutIcon + "')"};
+  background-image: url(${logoutIcon});
   position: absolute;
   right: 10px;
   top: 10px;

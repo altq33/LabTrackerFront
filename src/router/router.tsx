@@ -7,6 +7,7 @@ import { Tasks } from "pages/Tasks/Tasks";
 import { Welcome } from "pages/Welcome/Welcome";
 import { WorkSpaceLayout } from "pages/WorkSpaceLayout";
 import { createBrowserRouter } from "react-router-dom";
+import { TaskPage } from "pages/Task/TaskPage";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
           {
             path: "tasks",
             element: <Tasks />,
+          },
+          {
+            path: "tasks/:id",
+            element: <TaskPage />,
           },
           {
             path: "profile",

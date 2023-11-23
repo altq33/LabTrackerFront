@@ -56,7 +56,7 @@ const LinkListItem = styled.li`
 export const Navigation: React.FC<NavigationProps> = ({ links }) => {
   const state = useTypedSelector((state) => state);
 
-  const getCount = (text: string): number => {
+  const getCount = (text: string): number | string => {
     switch (text) {
       case "teachers":
         return state.teacher.teachers.length;
@@ -65,7 +65,7 @@ export const Navigation: React.FC<NavigationProps> = ({ links }) => {
       case "tasks":
         return state.task.tasks.length;
       default:
-        return 0;
+        return "";
     }
   };
 

@@ -37,3 +37,23 @@ export const normalizeDate = (dateString: string): string => {
   });
   return formattedDate;
 };
+
+export const normalizeDateTime = (dateString: string): string => {
+  const date = new Date(dateString);
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const hours = date
+    .toLocaleString("en-US", {
+      hour: "2-digit",
+      hour12: true,
+    })
+    .slice(0, -2);
+  const minutes = date.getMinutes();
+  const time12HourFormat = `${hours}:${(minutes < 10 ? "0" : "") + minutes} ${
+    date.getHours() >= 12 ? "PM" : "AM"
+  }`;
+  return `${formattedDate} ${time12HourFormat}`;
+};
