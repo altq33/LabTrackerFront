@@ -10,11 +10,13 @@ import {
   TaskActionsType,
 } from "types/store";
 
-export const getAllTasks = (params: string) => {
+export const getAllTasks = (params?: string) => {
   return async (dispatch: Dispatch<TaskAction>) => {
     try {
       dispatch({ type: TaskActionsType.FETCH_TASK });
-      const response = await $api.get<AugmentedTask[]>(`/tasks?${params}`);
+      const response = await $api.get<AugmentedTask[]>(
+        `/tasks?${params ?? ""}`,
+      );
       dispatch({
         type: TaskActionsType.GET_ALL_TASKS,
         payload: response.data,

@@ -9,10 +9,24 @@ import { SubjectSidebarListItem } from "components/SubjectSidebarListItem/Subjec
 import useWindowHeight from "hooks/useWindowHeight";
 import { TaskSidebarListItem } from "components/TaskSidebarListItem/TaskSidebarListItem";
 import { useTypedSelector } from "hooks/useTypedSelector";
+import { useEffect } from "react";
+import { getAllTeachers } from "store/actionCreators/teachers";
+import { useDispatch } from "react-redux";
+import { getAllSubjects } from "store/actionCreators/subjects";
+import { getAllTasks } from "store/actionCreators/tasks";
+import { AppDispatch } from "types/store";
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const state = useTypedSelector((state) => state);
   const windowHeight = useWindowHeight();
+
+  const dispatch: AppDispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllTeachers());
+    dispatch(getAllSubjects());
+    dispatch(getAllTasks());
+  }, [dispatch]);
 
   return (
     <div>
