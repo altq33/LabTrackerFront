@@ -67,3 +67,38 @@ export interface PostSubject {
   course: number;
   teacher_id: string | null;
 }
+
+export interface DescFilter {
+  label: "desc";
+  value: boolean;
+}
+
+export interface TeachersSortFilter {
+  label: "sort";
+  value: "name" | "surname" | "father_name";
+}
+
+export interface SubjectsSortFilter {
+  label: "sort";
+  value: "name" | "course" | "tasks_count";
+}
+
+export interface TasksSortFilter {
+  label: "sort";
+  value: "deadline" | "name" | "priority" | "type" | "status";
+}
+
+export interface PriorityFilter {
+  label: "priority";
+  value: TaskPriority;
+}
+
+export interface TypeFilter {
+  label: "task_type";
+  value: TaskType;
+}
+
+export interface ExpiredFilter {
+  label: "include_expired";
+  value: boolean;
+}
