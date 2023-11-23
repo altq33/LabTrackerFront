@@ -104,3 +104,10 @@ export interface DateInputProps {
   onClick?: () => void;
   placeholder?: string;
 }
+
+export interface FilterMenuProps {
+  label: string;
+  isChecked: boolean;
+  onAppend: () => void;
+  onRemove: () => void;
+}

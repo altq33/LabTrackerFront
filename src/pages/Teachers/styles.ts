@@ -13,6 +13,13 @@ export const TeachersContainer = styled.div`
   gap: 15px;
 `;
 
+export const Filters = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+`;
+
 export const AddBtn = styled.button`
   border: 0;
   background: transparent;

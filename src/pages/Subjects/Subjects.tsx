@@ -4,11 +4,14 @@ import { AppDispatch } from "types/store";
 import { useDispatch } from "react-redux";
 import { getAllSubjects } from "store/actionCreators/subjects";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { AddBtn } from "pages/Teachers/styles";
+import { AddBtn, Filters } from "pages/Teachers/styles";
 import { SubjectsForm } from "components/SubjectsForm/SubjectsForm";
 import { createPortal } from "react-dom";
 import { useSearchParams } from "react-router-dom";
 import { useTypedSelector } from "hooks/useTypedSelector";
+import { useFilterParams } from "hooks/useFilterParams";
+import { DescFilter, SubjectsSortFilter } from "types/api";
+import { FilterMenu } from "components/FilterMenu/FilterMenu";
 
 export const Subjects = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -16,9 +19,13 @@ export const Subjects = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const { appendParam, removeParam, searchParamsString } = useFilterParams<
+    DescFilter | SubjectsSortFilter
+  >();
+
   useLayoutEffect(() => {
-    dispatch(getAllSubjects());
-  }, [dispatch]);
+    dispatch(getAllSubjects(searchParamsString));
+  }, [dispatch, searchParamsString]);
 
   useEffect(() => {
     document.title = "Subjects";
@@ -30,6 +37,33 @@ export const Subjects = () => {
   return (
     <S.SubjectsContainer>
       <AddBtn onClick={() => setIsOpen(true)}>Add subject</AddBtn>
+      <Filters>
+        {/* Господи прости за это, но мне не пришло в голову как это сократить и сделать адекватным) */}
+        <FilterMenu
+          onAppend={() => appendParam({ label: "desc", value: true })}
+          onRemove={() => removeParam({ label: "desc" })}
+          isChecked={!!~searchParamsString.indexOf("desc")}
+          label={"Desc"}
+        />
+        <FilterMenu
+          onAppend={() => appendParam({ label: "sort", value: "name" })}
+          onRemove={() => removeParam({ label: "sort" })}
+          isChecked={!!~searchParamsString.indexOf("sort=name")}
+          label={"Name"}
+        />
+        <FilterMenu
+          onAppend={() => appendParam({ label: "sort", value: "course" })}
+          onRemove={() => removeParam({ label: "sort" })}
+          label={"Course"}
+          isChecked={!!~searchParamsString.indexOf("sort=course")}
+        />
+        <FilterMenu
+          onAppend={() => appendParam({ label: "sort", value: "tasks_count" })}
+          onRemove={() => removeParam({ label: "sort" })}
+          isChecked={!!~searchParamsString.indexOf("sort=tasks_count")}
+          label={"Tasks count"}
+        />
+      </Filters>
       {state.loading ? (
         <h2>Loading...</h2>
       ) : state.subjects.length ? (
@@ -42,7 +76,8 @@ export const Subjects = () => {
         <SubjectsForm
           onClose={() => {
             setIsOpen(false);
-            setSearchParams({});
+            searchParams.delete("openForm");
+            setSearchParams(searchParams);
           }}
           isOpen={isOpen}
         />,

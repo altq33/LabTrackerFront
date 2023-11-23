@@ -102,3 +102,12 @@ export interface ExpiredFilter {
   label: "include_expired";
   value: boolean;
 }
+
+export type FilterParam =
+  | DescFilter
+  | TeachersSortFilter
+  | SubjectsSortFilter
+  | TasksSortFilter
+  | PriorityFilter
+  | TypeFilter
+  | ExpiredFilter;

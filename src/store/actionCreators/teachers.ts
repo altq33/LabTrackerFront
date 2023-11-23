@@ -5,11 +5,11 @@ import { Dispatch } from "redux";
 import { Teacher } from "types/api";
 import { TeacherAction, TeacherActionsType } from "types/store";
 
-export const getAllTeachers = () => {
+export const getAllTeachers = (params: string) => {
   return async (dispatch: Dispatch<TeacherAction>) => {
     try {
       dispatch({ type: TeacherActionsType.FETCH_TEACHER });
-      const response = await $api.get<Teacher[]>("/teachers");
+      const response = await $api.get<Teacher[]>(`/teachers?${params}`);
       dispatch({
         type: TeacherActionsType.GET_ALL_TEACHERS,
         payload: response.data,

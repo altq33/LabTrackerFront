@@ -5,11 +5,11 @@ import { Dispatch } from "redux";
 import { PostSubject, Subject } from "types/api";
 import { SubjectAction, SubjectActionsType } from "types/store";
 
-export const getAllSubjects = () => {
+export const getAllSubjects = (params: string) => {
   return async (dispatch: Dispatch<SubjectAction>) => {
     try {
       dispatch({ type: SubjectActionsType.FETCH_SUBJECT });
-      const response = await $api.get<Subject[]>("/subjects");
+      const response = await $api.get<Subject[]>(`/subjects?${params}`);
       dispatch({
         type: SubjectActionsType.GET_ALL_SUBJECTS,
         payload: response.data,
