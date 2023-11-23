@@ -35,7 +35,6 @@ export const getAllSubjects = () => {
 export const addSubject = (data: PostSubject) => {
   return async (dispatch: Dispatch<SubjectAction>) => {
     try {
-      dispatch({ type: SubjectActionsType.FETCH_SUBJECT });
       const response = await $api.post<Subject>(`/subjects`, data);
       dispatch({
         type: SubjectActionsType.ADD_SUBJECT,
@@ -53,7 +52,6 @@ export const addSubject = (data: PostSubject) => {
 export const deleteSubject = (id: string) => {
   return async (dispatch: Dispatch<SubjectAction>) => {
     try {
-      dispatch({ type: SubjectActionsType.FETCH_SUBJECT });
       const response = await $api.delete<{ id: Subject["id"] }>(
         `/subjects/${id}`,
       );

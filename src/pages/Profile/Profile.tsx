@@ -2,9 +2,9 @@ import * as S from "./styles";
 import avatar from "assets/img/avatar.png";
 import usernameIcon from "assets/icons/@.svg";
 import { useDispatch } from "react-redux";
-import { UserActionsType } from "types/store";
 import { useTypedSelector } from "hooks/useTypedSelector";
 import { useEffect } from "react";
+import { UserActionsType } from "../../types/store";
 
 export const Profile = () => {
   const state = useTypedSelector((state) => state.user);

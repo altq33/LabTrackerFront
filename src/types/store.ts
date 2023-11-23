@@ -1,4 +1,4 @@
-import { rootReducer } from "store/reducers";
+import { appReducer } from "store/reducers";
 // eslint-disable-next-line import/named
 import { AnyAction } from "redux";
 // eslint-disable-next-line import/named
@@ -160,8 +160,8 @@ export interface SubjectReset {
 }
 
 export enum UserActionsType {
-  LOG = "LOG",
   LOGOUT = "LOGOUT",
+  LOG = "LOG",
   FETCH = "FETCH",
   ERROR = "ERROR",
 }
@@ -196,7 +196,6 @@ export interface LogAction {
   type: UserActionsType.LOG;
   payload: User;
 }
-
 export interface LogoutAction {
   type: UserActionsType.LOGOUT;
 }
@@ -210,9 +209,9 @@ export interface ErrorAction {
   payload: string;
 }
 
-export type UserAction = LogAction | LogoutAction | FetchAction | ErrorAction;
+export type UserAction = LogoutAction | LogAction | FetchAction | ErrorAction;
 
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof appReducer>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AppDispatch = ThunkDispatch<UserState, any, AnyAction>;

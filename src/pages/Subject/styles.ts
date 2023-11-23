@@ -26,6 +26,7 @@ export const DeleteBtn = styled.button`
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
+  flex-shrink: 0;
 `;
 
 export const FullCover = styled(Cover)`

@@ -42,7 +42,6 @@ export const addTask = (
 ) => {
   return async (dispatch: Dispatch<TaskAction | SubjectAction>) => {
     try {
-      dispatch({ type: TaskActionsType.FETCH_TASK });
       const response = await $api.post<AugmentedTask>(`/tasks`, data);
       dispatch({
         type: TaskActionsType.ADD_TASK,
@@ -64,7 +63,6 @@ export const addTask = (
 export const deleteTask = (id: string) => {
   return async (dispatch: Dispatch<TaskAction>) => {
     try {
-      dispatch({ type: TaskActionsType.FETCH_TASK });
       const response = await $api.delete<{ id: Task["id"] }>(`/tasks/${id}`);
       dispatch({
         type: TaskActionsType.DELETE_TASK,
@@ -82,7 +80,6 @@ export const deleteTask = (id: string) => {
 export const updateTask = (id: string, data: Partial<Omit<Task, "id">>) => {
   return async (dispatch: Dispatch<TaskAction>) => {
     try {
-      dispatch({ type: TaskActionsType.FETCH_TASK });
       const response = await $api.patch<AugmentedTask>(`/tasks/${id}`, data);
       dispatch({
         type: TaskActionsType.UPDATE_TASK,

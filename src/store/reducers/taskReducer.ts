@@ -7,7 +7,7 @@ export const taskReducer = (
 ): TaskState => {
   switch (action.type) {
     case TaskActionsType.ERROR_TASK:
-      return { ...state, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
     case TaskActionsType.FETCH_TASK:
       return { ...state, loading: true, error: null };
     case TaskActionsType.ADD_TASK:

@@ -18,6 +18,7 @@ export const TopColorIndicator = styled.div<IDProps>`
   border-radius: 6px;
   background: ${({ theme, $id }) =>
     Object.values(theme.brightColors)[$id.charCodeAt(0) % 6]};
+  flex-shrink: 0;
 `;
 
 export const TopTitle = styled.h2`
@@ -33,6 +34,9 @@ export const BottomContainer = styled.div`
   padding-left: 9px;
   gap: 5px;
   align-items: flex-end;
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const Entities = styled.div`

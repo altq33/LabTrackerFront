@@ -7,7 +7,7 @@ export const subjectReducer = (
 ): SubjectState => {
   switch (action.type) {
     case SubjectActionsType.ERROR_SUBJECT:
-      return { ...state, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
     case SubjectActionsType.FETCH_SUBJECT:
       return { ...state, loading: true, error: null };
     case SubjectActionsType.ADD_SUBJECT:

@@ -14,9 +14,12 @@ export const userReducer = (
         success: true,
       };
     case UserActionsType.LOGOUT:
-      localStorage.removeItem("persist:root");
-      localStorage.removeItem("accessToken");
-      return { loading: false, error: null, user: null, success: false };
+      return {
+        loading: false,
+        error: null,
+        user: null,
+        success: true,
+      };
     case UserActionsType.ERROR:
       return {
         loading: false,

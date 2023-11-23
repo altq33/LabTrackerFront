@@ -12,7 +12,7 @@ import { TasksForm } from "components/TasksForm/TasksForm";
 
 export const Tasks = () => {
   const dispatch: AppDispatch = useDispatch();
-  const state = useTypedSelector((state) => state.task.tasks);
+  const state = useTypedSelector((state) => state.task);
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -36,7 +36,13 @@ export const Tasks = () => {
   return (
     <S.TasksContainer>
       <AddBtn onClick={onAdd}>Add task</AddBtn>
-      <AllTaskList data={state || []} />
+      {state.loading ? (
+        <h2>Loading...</h2>
+      ) : state.tasks.length ? (
+        <AllTaskList data={state.tasks} />
+      ) : (
+        <h2>No tasks</h2>
+      )}
       {createPortal(
         <TasksForm onClose={onClose} isOpen={isOpen} />,
         document.body,

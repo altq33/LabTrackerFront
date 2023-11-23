@@ -12,7 +12,7 @@ import { useTypedSelector } from "hooks/useTypedSelector";
 
 export const Subjects = () => {
   const dispatch: AppDispatch = useDispatch();
-  const state = useTypedSelector((state) => state.subject.subjects);
+  const state = useTypedSelector((state) => state.subject);
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -30,7 +30,14 @@ export const Subjects = () => {
   return (
     <S.SubjectsContainer>
       <AddBtn onClick={() => setIsOpen(true)}>Add subject</AddBtn>
-      <SubjectList data={state || []} />
+      {state.loading ? (
+        <h2>Loading...</h2>
+      ) : state.subjects.length ? (
+        <SubjectList data={state.subjects} />
+      ) : (
+        <h2>No subjects</h2>
+      )}
+
       {createPortal(
         <SubjectsForm
           onClose={() => {

@@ -35,7 +35,6 @@ export const getAllTeachers = () => {
 export const deleteTeacher = (id: string) => {
   return async (dispatch: Dispatch<TeacherAction>) => {
     try {
-      dispatch({ type: TeacherActionsType.FETCH_TEACHER });
       const response = await $api.delete<{ id: Teacher["id"] }>(
         `/teachers/${id}`,
       );
@@ -55,7 +54,6 @@ export const deleteTeacher = (id: string) => {
 export const addTeacher = (data: Omit<Teacher, "id">) => {
   return async (dispatch: Dispatch<TeacherAction>) => {
     try {
-      dispatch({ type: TeacherActionsType.FETCH_TEACHER });
       const response = await $api.post<Teacher>(`/teachers`, data);
       dispatch({
         type: TeacherActionsType.ADD_TEACHER,

@@ -11,7 +11,7 @@ import { useTypedSelector } from "hooks/useTypedSelector";
 export const Teachers = () => {
   const dispatch: AppDispatch = useDispatch();
   const [formIsOpen, setFormIsOpen] = useState(false);
-  const state = useTypedSelector((state) => state.teacher.teachers);
+  const state = useTypedSelector((state) => state.teacher);
 
   useLayoutEffect(() => {
     document.title = "Teachers";
@@ -21,7 +21,14 @@ export const Teachers = () => {
   return (
     <S.TeachersContainer>
       <S.AddBtn onClick={() => setFormIsOpen(true)}>Add teacher</S.AddBtn>
-      <TeacherList data={state || []} />
+      {state.loading ? (
+        <h2>Loading...</h2>
+      ) : state.teachers.length ? (
+        <TeacherList data={state.teachers} />
+      ) : (
+        <h2>No teachers</h2>
+      )}
+
       {createPortal(
         <TeachersForm
           onClose={() => setFormIsOpen(false)}

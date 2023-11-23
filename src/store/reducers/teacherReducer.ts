@@ -7,7 +7,7 @@ export const teacherReducer = (
 ): TeacherState => {
   switch (action.type) {
     case TeacherActionsType.ERROR_TEACHER:
-      return { ...state, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
     case TeacherActionsType.FETCH_TEACHER:
       return { ...state, loading: true, error: null };
     case TeacherActionsType.ADD_TEACHER:

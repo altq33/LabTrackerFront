@@ -15,7 +15,7 @@ export const ProfileContainer = styled.div`
   position: relative;
   animation: ${departure} 0.65s linear;
   display: inline-flex;
-  min-width: 350px;
+  width: 100%;
   flex-direction: column;
   border: 1px solid ${({ theme }) => theme.dullColors.border};
   background: #fff;
@@ -24,6 +24,11 @@ export const ProfileContainer = styled.div`
   padding: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    min-width: 100px;
+  }
 `;
 
 export const LogoutBtn = styled.button`
@@ -43,6 +48,10 @@ export const LogoutBtn = styled.button`
 export const ProfileAvatar = styled(Avatar)`
   width: 200px;
   height: 200px;
+  @media (max-width: 480px) {
+    width: 60%;
+    height: auto;
+  }
 `;
 
 export const Username = styled.div`
@@ -54,11 +63,16 @@ export const Username = styled.div`
   gap: 5px;
   border-radius: 5px;
   background: ${({ theme }) => theme.brightColors.yellow};
+  max-width: 90%;
 `;
 
 export const UsernameIcon = styled.img`
   width: 46px;
   height: 46px;
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const UsernameTitle = styled.h2`
@@ -68,6 +82,11 @@ export const UsernameTitle = styled.h2`
   font-style: bold;
   font-weight: 500;
   line-height: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 export const EmailTitle = styled.h3`
@@ -76,6 +95,12 @@ export const EmailTitle = styled.h3`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 export const CreatedTitle = styled.h4`
@@ -84,4 +109,7 @@ export const CreatedTitle = styled.h4`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
 `;
